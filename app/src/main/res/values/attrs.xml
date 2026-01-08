@@ -1,0 +1,165 @@
+<!--
+  Copyright 2011 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<!--<resources>-->
+
+<!--    <declare-styleable name="SlidingMenu">-->
+<!--        <attr name="mode">-->
+<!--            <enum name="left" value="0" />-->
+<!--            <enum name="right" value="1" />-->
+<!--        </attr>-->
+<!--        <attr name="viewAbove" format="reference" />-->
+<!--        <attr name="viewBehind" format="reference" />-->
+<!--        <attr name="behindOffset" format="dimension" />-->
+<!--        <attr name="behindWidth" format="dimension" />-->
+<!--        <attr name="behindScrollScale" format="float" />-->
+<!--        <attr name="touchModeAbove">-->
+<!--            <enum name="margin" value="0" />-->
+<!--            <enum name="fullscreen" value="1" />-->
+<!--        </attr>-->
+<!--        <attr name="touchModeBehind">-->
+<!--            <enum name="margin" value="0" />-->
+<!--            <enum name="fullscreen" value="1" />-->
+<!--        </attr>-->
+<!--        <attr name="shadowDrawable" format="reference" />-->
+<!--        <attr name="shadowWidth" format="dimension" />-->
+<!--        <attr name="fadeEnabled" format="boolean" />-->
+<!--        <attr name="fadeDegree" format="float" />-->
+<!--        <attr name="selectorEnabled" format="boolean" />-->
+<!--        <attr name="selectorDrawable" format="reference" />-->
+<!--        <attr name="customFont" format="string"/>-->
+<!--    </declare-styleable>-->
+
+<!--</resources>-->
+
+
+<resources>
+
+    <declare-styleable name="SlidingMenu">
+        <attr name="mode">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+        <attr name="viewAbove" format="reference" />
+        <attr name="viewBehind" format="reference" />
+        <attr name="behindOffset" format="dimension" />
+        <attr name="behindWidth" format="dimension" />
+        <attr name="behindScrollScale" format="float" />
+        <attr name="touchModeAbove">
+            <enum name="margin" value="0" />
+            <enum name="fullscreen" value="1" />
+        </attr>
+        <attr name="touchModeBehind">
+            <enum name="margin" value="0" />
+            <enum name="fullscreen" value="1" />
+        </attr>
+        <attr name="shadowDrawable" format="reference" />
+        <attr name="shadowWidth" format="dimension" />
+        <attr name="fadeEnabled" format="boolean" />
+        <attr name="fadeDegree" format="float" />
+        <attr name="selectorEnabled" format="boolean" />
+        <attr name="selectorDrawable" format="reference" />
+        <attr name="customFont" format="string"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="CropImageView">
+        <attr name="cropGuidelines">
+            <enum name="off" value="0"/>
+            <enum name="onTouch" value="1"/>
+            <enum name="on" value="2"/>
+        </attr>
+        <attr name="cropScaleType">
+            <enum name="fitCenter" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="centerCrop" value="2"/>
+            <enum name="centerInside" value="3"/>
+        </attr>
+        <attr name="cropShape">
+            <enum name="rectangle" value="0"/>
+            <enum name="oval" value="1"/>
+        </attr>
+        <attr name="cropAutoZoomEnabled" format="boolean"/>
+        <attr name="cropMaxZoom" format="integer"/>
+        <attr name="cropMultiTouchEnabled" format="boolean"/>
+        <attr name="cropFixAspectRatio" format="boolean"/>
+        <attr name="cropAspectRatioX" format="integer"/>
+        <attr name="cropAspectRatioY" format="integer"/>
+        <attr name="cropInitialCropWindowPaddingRatio" format="float"/>
+        <attr name="cropBorderLineThickness" format="dimension"/>
+        <attr name="cropBorderLineColor" format="color"/>
+        <attr name="cropBorderCornerThickness" format="dimension"/>
+        <attr name="cropBorderCornerOffset" format="dimension"/>
+        <attr name="cropBorderCornerLength" format="dimension"/>
+        <attr name="cropBorderCornerColor" format="color"/>
+        <attr name="cropGuidelinesThickness" format="dimension"/>
+        <attr name="cropGuidelinesColor" format="color"/>
+        <attr name="cropBackgroundColor" format="color"/>
+        <attr name="cropSnapRadius" format="dimension"/>
+        <attr name="cropTouchRadius" format="dimension"/>
+        <attr name="cropSaveBitmapToInstanceState" format="boolean"/>
+        <attr name="cropShowCropOverlay" format="boolean"/>
+        <attr name="cropShowProgressBar" format="boolean"/>
+        <attr name="cropMinCropWindowWidth" format="dimension"/>
+        <attr name="cropMinCropWindowHeight" format="dimension"/>
+        <attr name="cropMinCropResultWidthPX" format="float"/>
+        <attr name="cropMinCropResultHeightPX" format="float"/>
+        <attr name="cropMaxCropResultWidthPX" format="float"/>
+        <attr name="cropMaxCropResultHeightPX" format="float"/>
+        <attr name="cropFlipHorizontally" format="boolean"/>
+        <attr name="cropFlipVertically" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="CountryCodePicker">
+        <attr name="defaultCode" format="integer" />
+        <attr name="contentColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="arrowSize" format="dimension" />
+        <attr name="countryPreference" format="string" />
+        <attr name="defaultNameCode" format="string" />
+        <attr name="hideNameCode" format="boolean" />
+        <attr name="ccpLanguage" format="enum">
+            <enum name="ARABIC" value="1" />
+            <enum name="BENGALI" value="2" />
+            <enum name="CHINESE_SIMPLIFIED" value="3" />
+            <enum name="ENGLISH" value="4" />
+            <enum name="FRENCH" value="5" />
+            <enum name="GERMAN" value="6" />
+            <enum name="GUJARATI" value="7" />
+            <enum name="HINDI" value="8" />
+            <enum name="JAPANESE" value="9" />
+            <enum name="JAVANESE" value="10" />
+            <enum name="PORTUGUESE" value="11" />
+            <enum name="RUSSIAN" value="12" />
+            <enum name="SPANISH" value="13" />
+            <enum name="HEBREW" value="14" />
+            <enum name="CHINESE_TRADITIONAL" value="15" />
+            <enum name="KOREAN" value="16" />
+        </attr>
+        <attr name="keyboardAutoPopOnSearch" format="boolean" />
+        <attr name="customMasterCountries" format="string" />
+        <attr name="showFlag" format="boolean" />
+        <attr name="showFullName" format="boolean" />
+        <attr name="selectionDialogShowSearch" format="boolean" />
+        <attr name="ccpClickable" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundedBarChart">
+        <attr name="radius" format="dimension" />
+    </declare-styleable>
+
+
+</resources>

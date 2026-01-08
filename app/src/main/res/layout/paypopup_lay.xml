@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/inner_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/pure_white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/slide_lay"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/tool_bar"
+            android:layout_alignParentTop="true"
+            android:visibility="gone"
+
+            android:padding="10dp">
+
+
+            <TextView
+                android:id="@+id/slideImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@drawable/back"
+                android:drawablePadding="5dp"
+                android:padding="5dp"
+                android:textColor="@color/btn_accept_primary"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/headerTxt"
+                style="@android:style/TextAppearance.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/my_status"
+                android:textColor="@color/pure_white" />
+
+
+        </RelativeLayout>
+        <FrameLayout android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:id="@+id/shadow"
+            android:visibility="gone"
+            android:layout_below="@+id/slide_lay"
+        >
+            <!-- YOUR STUFF HERE -->
+        </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shadow"
+      android:gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:visibility="gone">
+
+            <TextView
+                style="@android:style/TextAppearance.Medium"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/p_congrats"
+                 />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#C9C8C8"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <TextView
+                android:id="@+id/fareTxt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="Payment Received"
+                android:textColor="#05A660"
+                android:textSize="24dp"
+                style="@style/edittext_style"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/currency_symbol"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="5dp"
+android:src="@drawable/tick_circle"
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:id="@+id/jobreferralTxt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="@color/txt_light_gray"
+                android:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/back_main"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/app_theme_main"
+            android:text="@string/p_main"
+            android:textAllCaps="false"
+            android:textColor="@drawable/text_color_black_to_white" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,23 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This is the line -->
+    <item
+        android:bottom=".5dp"
+        android:left=".5dp"
+        android:right=".5dp"
+        android:top=".5dp">
+          <shape>
+              <solid android:color="@color/pure_white" />
+              <corners
+                  android:topLeftRadius="25dp"
+                  android:topRightRadius="25dp"/>
+
+              <gradient
+                  android:endColor="@color/pure_white"
+                  android:startColor="@color/pure_white"
+                  android:type="linear" />
+          </shape>
+
+    </item>
+    <!-- This is the main color -->
+
+</layer-list>

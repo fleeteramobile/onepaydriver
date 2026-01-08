@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white">
+
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/mytrip"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+android:layout_alignParentRight="true"
+            android:fontFamily="@font/inter_bold"
+            android:textSize="20dp"
+
+            android:layout_marginRight="10dp"
+            app:track="@drawable/track"
+            android:thumb="@drawable/thumb"
+            android:textOn="Avaliable"
+            android:textOff="Offline"
+            app:showText="false"
+
+            />
+
+
+
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pure_white">
+
+
+
+
+        <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/location_marker" />
+</RelativeLayout>
+
+
+</LinearLayout>

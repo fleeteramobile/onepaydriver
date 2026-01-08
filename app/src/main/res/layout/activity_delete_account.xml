@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content"
+    android:orientation="vertical"
+    tools:context=".DeleteAccountActivity">
+    <RelativeLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_alignParentTop="true"
+
+        android:padding="10dp"
+        tools:ignore="MissingConstraints">
+
+
+
+            <ImageView
+                android:id="@+id/back_page"
+
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_back_white"
+
+                android:textAllCaps="false"
+                android:textSize="14sp" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/back"
+            android:drawablePadding="5dp"
+            android:padding="5dp"
+            android:textColor="@color/btn_accept_primary"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/headerTxt"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:visibility="gone"
+            android:text="@string/invite_friend"
+            android:textColor="@color/pure_white" />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/slide_lay"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/tool_bar"
+        android:layout_alignParentTop="true"
+android:visibility="gone"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/slideImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/back"
+            android:drawablePadding="5dp"
+            android:padding="5dp"
+            android:textColor="@color/btn_accept_primary"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <TextView
+
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/privacy_settings"
+            android:textColor="@color/pure_white" />
+
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/deleteacc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shadow"
+        android:layout_margin="20dp"
+
+        android:background="@color/app_theme_main"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="@string/del_acc"
+        android:textColor="@color/pure_white"
+        android:textSize="20sp" />
+</LinearLayout>

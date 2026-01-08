@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:background="@color/pure_white"
+    android:orientation="vertical"
+    android:id="@+id/slide_lay">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:orientation="vertical"
+        >
+
+    <RelativeLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/tool_bar"
+
+android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:padding="10dp"
+      >
+
+
+        <TextView
+            android:id="@+id/back_Txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/back"
+            android:drawablePadding="5dp"
+            android:padding="5dp"
+            android:visibility="gone"
+            android:textColor="@color/link_blue"
+            android:textSize="16sp"
+           />
+
+
+
+
+
+            <ImageView
+                android:id="@+id/callText"
+
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="1dp"
+                android:layout_gravity="center"
+
+                android:src="@drawable/ic_arrow_back_white"
+
+
+                />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/textview_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Register"
+            android:textColor="@color/app_theme_main"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="vertical"
+
+            android:paddingBottom="220dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                style="@style/InputLayoutOuterbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:background="#F5F9FE"
+                android:hint="@string/mobileno"
+                app:hintEnabled="false"
+                app:hintTextAppearance="@color/app_theme_main"
+                app:hintTextColor="@color/app_theme_main"
+                app:passwordToggleEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_first_name"
+                    style="@style/ProfileEditText"
+                    android:layout_width="match_parent"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+                    android:textCursorDrawable="@null"
+                    android:hint="@string/first"
+
+                    android:imeOptions="actionGo"
+
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                style="@style/InputLayoutOuterbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="15dp"
+                android:background="#F5F9FE"
+                android:hint="@string/mobileno"
+                app:hintEnabled="false"
+                app:hintTextAppearance="@color/app_theme_main"
+                app:hintTextColor="@color/app_theme_main"
+                app:passwordToggleEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_last_name"
+                    style="@style/ProfileEditText"
+                    android:layout_width="match_parent"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+                    android:textCursorDrawable="@null"
+                    android:hint="@string/last"
+
+                    android:imeOptions="actionGo"
+
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+          android:layout_marginTop="15dp"
+                android:background="#F5F9FE"
+                android:orientation="vertical"
+
+               >
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/edt_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:padding="12dp"
+
+
+                    style="@style/edittext_style"/>
+
+
+
+
+
+                <RadioGroup
+                    android:id="@+id/rb_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"
+                        android:text="Male"
+                        android:textColor="@color/pure_black"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"
+                        android:text="Female"
+                        android:textColor="@color/pure_black"
+                        android:textSize="16sp" />
+
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                style="@style/InputLayoutOuterbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="15dp"
+                android:background="#F5F9FE"
+                android:hint="@string/mobileno"
+                app:hintEnabled="false"
+                app:hintTextAppearance="@color/app_theme_main"
+                app:hintTextColor="@color/app_theme_main"
+                app:passwordToggleEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_email"
+                    style="@style/ProfileEditText"
+                    android:layout_width="match_parent"
+
+                    android:textCursorDrawable="@null"
+                    android:hint="@string/email"
+
+                    android:imeOptions="actionGo"
+
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                app:hintEnabled="false"
+                style="@style/InputLayoutOuterbox"
+                android:layout_marginTop="15dp"
+                app:passwordToggleEnabled="true"
+
+                android:background="#F5F9FE">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_pswd"
+                    style="@style/ProfileEditText"
+                    android:layout_width="match_parent"
+                    android:textCursorDrawable="@null"
+                    android:imeOptions="actionGo"
+                    android:hint="Password"
+
+                    android:inputType="textPassword"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                app:hintEnabled="false"
+                style="@style/InputLayoutOuterbox"
+                android:layout_marginTop="15dp"
+                app:passwordToggleEnabled="true"
+
+                android:background="#F5F9FE">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_cnfrm_pswd"
+                    style="@style/ProfileEditText"
+                    android:layout_width="match_parent"
+                    android:textCursorDrawable="@null"
+                    android:imeOptions="actionGo"
+                    android:hint="@string/confimpswd"
+
+                    android:inputType="textPassword"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                style="@style/InputLayoutOuterbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="15dp"
+                android:background="#F5F9FE"
+                android:hint="@string/mobileno"
+                app:hintEnabled="false"
+                app:hintTextAppearance="@color/app_theme_main"
+                app:hintTextColor="@color/app_theme_main"
+                app:passwordToggleEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_driver_license"
+                    style="@style/ProfileEditText"
+                    android:layout_width="match_parent"
+                    android:textCursorDrawable="@null"
+
+                    android:hint="license id"
+
+                    android:imeOptions="actionGo"
+
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                style="@style/InputLayoutOuterbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="15dp"
+                android:background="#F5F9FE"
+                android:hint="@string/mobileno"
+                app:hintEnabled="false"
+                app:hintTextAppearance="@color/app_theme_main"
+                app:hintTextColor="@color/app_theme_main"
+                app:passwordToggleEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_driver_license_exp"
+                    style="@style/ProfileEditText"
+                    android:layout_width="match_parent"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:textCursorDrawable="@null"
+                    android:hint="license expiry date"
+
+                    android:imeOptions="actionGo"
+
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                style="@style/InputLayoutOuterbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="15dp"
+                android:background="#F5F9FE"
+                android:hint="@string/mobileno"
+                app:hintEnabled="false"
+                app:hintTextAppearance="@color/app_theme_main"
+                app:hintTextColor="@color/app_theme_main"
+                app:passwordToggleEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/referalCdeEdt"
+                    style="@style/ProfileEditText"
+                    android:layout_width="match_parent"
+                    android:textCursorDrawable="@null"
+
+                    android:hint="@string/referal_code"
+
+                    android:imeOptions="actionGo"
+
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+              >
+
+
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:background="@drawable/edittext_bg_normal">
+
+
+                    <LinearLayout
+
+                        android:id="@+id/ll_driver_lic_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <RelativeLayout
+                            android:layout_width="80dp"
+                            android:layout_gravity="center_horizontal"
+
+                           android:background="@drawable/upload_icon"
+                            android:layout_height="80dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                app:srcCompat="@drawable/folder" />
+                        </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:gravity="center_horizontal"
+                            android:maxLines="2"
+                            android:text="upload driver lic"
+                            android:textColor="@color/title_text_hint"
+                            android:textSize="14sp" />
+
+
+
+
+
+                    </LinearLayout>
+
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgV_license"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal"
+                            android:padding="@dimen/dp_5"
+
+                            android:scaleType="fitCenter" />
+
+
+
+
+                </FrameLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/radius_btn_background"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/upload_photo"
+                    android:textColor="@color/pure_white"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+             >
+
+
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:background="@drawable/edittext_bg_normal">
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_driver_lic_back_txt"                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="vertical">
+                        <RelativeLayout
+                            android:layout_width="80dp"
+                            android:layout_gravity="center_horizontal"
+
+                            android:background="@drawable/upload_icon"
+                            android:layout_height="80dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                app:srcCompat="@drawable/folder" />
+                        </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:gravity="center_horizontal"
+                            android:maxLines="2"
+                            android:text="upload driver lic back"
+                            android:textColor="@color/title_text_hint"
+                            android:textSize="14sp" />
+
+
+
+
+
+                    </LinearLayout>
+
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgV_license_back"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="@dimen/dp_5"
+
+                        android:scaleType="fitCenter" />
+
+
+
+
+                </FrameLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/radius_btn_background"
+                    android:gravity="center"
+                    android:padding="10dp"
+
+                    android:layout_marginTop="10dp"
+                    android:text="@string/upload_photo"
+                    android:textColor="@color/pure_white"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+             >
+
+
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:background="@drawable/edittext_bg_normal">
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_profile_pic_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="vertical">
+                        <RelativeLayout
+                            android:layout_width="80dp"
+                            android:layout_gravity="center_horizontal"
+
+                            android:background="@drawable/upload_icon"
+                            android:layout_height="80dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                app:srcCompat="@drawable/folder" />
+                        </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:gravity="center_horizontal"
+                            android:maxLines="2"
+                            android:text="upload profile pic"
+                            android:textColor="@color/title_text_hint"
+                            android:textSize="14sp" />
+
+
+
+
+
+                    </LinearLayout>
+
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgV_profile"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="@dimen/dp_5"
+
+                        android:scaleType="fitCenter" />
+
+
+
+
+                </FrameLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/radius_btn_background"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/upload_photo"
+                    android:textColor="@color/pure_white"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+
+
+
+            <TextView
+                android:id="@+id/btn_nxt"
+                android:layout_width="250dp"
+                android:layout_height="@dimen/tool_bar_bottom"
+                android:layout_margin="15dp"
+                android:background="@drawable/radius_btn_background"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/next"
+                android:textAllCaps="false"
+                android:textColor="@drawable/text_color_black_to_white"
+                android:textSize="18sp" />
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dp_40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</ScrollView>

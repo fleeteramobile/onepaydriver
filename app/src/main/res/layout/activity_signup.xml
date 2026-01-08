@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pure_white"
+
+
+
+
+    >
+
+
+
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header_lay"
+
+
+
+        tools:ignore="MissingConstraints">
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/login_contain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/pure_white"
+        android:layout_margin="20dp"
+      app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+    android:orientation="vertical">
+
+
+
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+            <ImageView
+                android:id="@+id/imageview"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:srcCompat="@drawable/one_pay_logo" />
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+android:orientation="vertical"
+                android:layout_below="@+id/header_lay">
+
+
+
+                <TextView
+                    android:id="@+id/txt_mobileno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+style="@style/edittext_style_bold"
+
+                    android:text="Create Your Business Profile"
+                    android:textColor="@color/pure_black"
+                    android:textSize="20sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+
+                    android:id="@+id/mobile_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_verifyotp"
+
+
+                    android:layout_marginTop="15dp"
+                    style="@style/edittext_style"
+                    android:textSize="14dp"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_verifyotp"
+
+                    android:gravity="center"
+                    android:text="We will send you the 4 digit verification code "
+                    />
+
+                <TextView
+                    android:id="@+id/acc_signin"
+                    android:textSize="13sp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_mobileno"
+                    android:layout_marginLeft="06dp"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:layout_marginBottom="7dp"
+                    android:text="acc signin" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/mobile_lay"
+                    android:gravity="left|center"
+android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+android:visibility="gone"
+                        android:id="@+id/countrycode_lay"
+                        android:background="@drawable/button_background_round_white_vali"
+                        android:padding="8dp"
+
+                        >
+
+
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center"
+
+                            android:src="@drawable/ic_arrow_down" />
+                    </LinearLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/InputLayoutOuterbox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+
+                        android:background="#F5F9FE"
+                        android:hint="@string/mobileno"
+                        app:hintEnabled="false"
+                        app:hintTextAppearance="@color/app_theme_main"
+                        app:hintTextColor="@color/app_theme_main"
+                        app:passwordToggleEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_mobileno"
+                            style="@style/ProfileEditText"
+                            android:layout_width="match_parent"
+                            android:textCursorDrawable="@null"
+                            android:digits="0123456789"
+                            android:hint="@string/mobileno"
+
+                            android:imeOptions="actionGo"
+
+                            android:inputType="number" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/continue_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:padding="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:stateListAnimator="@null"
+                android:elevation="10dp"
+                android:background="@drawable/ic_new_button_shadow"
+                android:orientation="horizontal">
+
+
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/body_iv"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="center"
+
+                    android:textAllCaps="true"
+                    android:padding="10dp"
+                    android:text="Generate otp"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:baselineAligned="false"
+
+                android:visibility="visible">
+                <!--  -->
+
+                <ImageView
+                    android:id="@+id/back_click"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:padding="12dp"
+                    app:srcCompat="@drawable/back" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

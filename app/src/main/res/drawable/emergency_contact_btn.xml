@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This is the line -->
+    <item
+        android:bottom="0.5dp"
+        android:left="0.5dp"
+        android:right="0.5dp"
+        android:top="0.5dp">
+        <shape>
+            <solid android:color="@color/theme_accent_red" />
+            <corners
+                android:bottomRightRadius="15dp"
+                android:bottomLeftRadius="15dp"
+                android:topLeftRadius="15dp"
+                android:topRightRadius="15dp"/>
+        </shape>
+
+        <!-- <shape xmlns:android="http://schemas.android.com/apk/res/android">
+        <stroke
+        android:width="0.5dp"
+        android:color="#ff0000" />
+
+        <corners android:radius="5dp" />
+        <solid android:color="@color/white" />
+        </shape>-->
+    </item>
+    <!-- This is the main color -->
+
+</layer-list>

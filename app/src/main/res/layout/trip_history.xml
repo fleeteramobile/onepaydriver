@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pure_white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/tool_bar_lay"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@color/pure_white">
+
+
+
+            <ImageView
+                android:id="@+id/callText"
+                style="@style/enterTxt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+
+                android:textAllCaps="false"
+                android:src="@drawable/ic_arrow_back_white"
+
+
+                android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/slide_lay"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/tool_bar"
+
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/slideImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/back"
+            android:drawablePadding="5dp"
+            android:padding="15dp"
+            android:textColor="@color/btn_accept_primary"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+
+        <LinearLayout
+            android:id="@+id/km_lay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="2dp"
+            android:background="@color/clr_transparent"
+            android:gravity="left"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/total_km"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:scrollHorizontally="true"
+                android:tag="start"
+                android:text="@string/total_km"
+                android:textColor="@color/pure_black"
+
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/m_timer"
+                android:textColor="@color/pure_black"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="2dp"
+
+            android:gravity="left"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:scrollHorizontally="true"
+                android:tag="start"
+                android:text="@string/waiting_time"
+                android:textColor="@drawable/text_color_black_to_white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/m_timer"
+                android:textColor="@drawable/text_color_black_to_white"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/headerTxt"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:text="@string/trip_history"
+            android:textColor="@color/pure_white" />
+
+        <ImageView
+            android:id="@+id/headicon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="2dp"
+            android:layout_toLeftOf="@+id/headerTxt"
+            android:gravity="center"
+            android:visibility="gone"
+         />
+
+
+    </RelativeLayout>
+
+
+
+    <FrameLayout
+        android:id="@+id/mainFrag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

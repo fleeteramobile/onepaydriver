@@ -1,0 +1,28 @@
+<resources>
+    <string name="sos_short_desc">Let\'s make travel safer...</string>
+    <string name="sos_long_desc">Alert your dear ones incase of emergency. Add them to your emergency contacts.</string>
+    <string name="sos_more_info">You can add up to 3 contacts</string>
+    <string name="add_contacts">Add Contacts</string>
+    <string name="already_added">Contact already present. Please try adding another contact.</string>
+    <string name="contact_limit_reached">You can add up to 3 contacts. Remove any contact to add another.</string>
+    <string name="server_error">Try again</string>
+    <string name="please_try_again">Please try again</string>
+    <string name="emergency">Emergency</string>
+    <string name="contact_min_alert">Please select valid contact number</string>
+
+    <string name="str_loc">Needs to update your current location to our server in order to verify our closest driver\'s availability and track the location during trip.</string>
+    <string name="sos_contact">Read contacts permission is necessary to pick emergency contact</string>
+    <string name="str_phone">Call phone and read phone state permission is necessary contact driver</string>
+    <string name="str_media">We would like to access your media in order to set the profile picture</string>
+
+    <string name="privacy_settings">Privacy Settings</string>
+    <string name="del_acc">Delete Your Account</string>
+
+    <string name="alert_delete_contact">Are you sure want to delete the contact?</string>
+
+    <string name="emergency_contact">Emergency Contacts</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+</resources>
+

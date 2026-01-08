@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/select_drop_location"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/header_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+       >
+
+        <ImageView
+            android:id="@+id/back_icon"
+            style="@style/Widget.AppCompat.ActionButton"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginRight="?attr/actionBarSize"
+            android:visibility="visible"
+            app:srcCompat="@drawable/back" />
+
+        <ImageView
+            android:id="@+id/header_titleTxt"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="3dp"
+            android:textColor="@color/hdr_txt_primary"
+            android:visibility="gone"
+            />
+
+    </RelativeLayout>
+
+    <include
+        layout="@layout/map_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_bar"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/tapped_location1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+
+            android:drawablePadding="10dp"
+            android:layout_weight="1"
+android:layout_gravity="center"
+            android:gravity="left"
+            android:padding="10dp"
+            android:text="@string/tap_map"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/butt_reset"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+
+            android:gravity="center"
+            android:text="@string/reset"
+            android:textAllCaps="false"
+            android:textColor="@drawable/text_color_black_to_white" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/butt_onboard"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/draw_black_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/direction"
+            android:textAllCaps="false"
+            android:textColor="@drawable/text_color_black_to_white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/butt_submit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/draw_black_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/submit"
+            android:textAllCaps="false"
+            android:textColor="@drawable/text_color_black_to_white" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/inner_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/pure_white"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/body_iv"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+
+                android:layout_centerHorizontal="true"
+
+                android:src="@drawable/one_pay_logo" />
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                style="@style/InputLayoutOuterbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:background="#F5F9FE"
+                android:hint="Enter your account id"
+                app:hintEnabled="false"
+                app:hintTextAppearance="@color/app_theme_main"
+                app:hintTextColor="@color/app_theme_main"
+                app:passwordToggleEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_accesskey"
+                    style="@style/ProfileEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cursorVisible="true"
+                    android:hint="Enter your account name"
+                    android:imeOptions="actionGo"
+                    android:textColor="@color/app_text_primary"
+                    android:textColorHint="@color/app_text_primary"
+                    android:inputType="text"
+                    android:textCursorDrawable="@null" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <EditText
+                android:id="@+id/edt_url"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="05dp"
+                android:background="@color/clr_transparent"
+                android:hint="enter your url"
+                android:padding="10dp"
+                android:singleLine="true"
+
+                android:textColor="@color/pure_black"
+                android:textColorHint="@color/hint_text_gray"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/edt_domain"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="05dp"
+                android:background="@color/clr_transparent"
+                android:hint="enter your domain"
+                android:padding="10dp"
+                android:singleLine="true"
+
+                android:textColor="@color/pure_black"
+                android:textColorHint="@color/hint_text_gray"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/edt_company_key"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="05dp"
+                android:background="@color/clr_transparent"
+                android:hint="enter your company key"
+                android:padding="10dp"
+                android:singleLine="true"
+
+                android:text="FNpfuspyEAzhjfoh2ONpWK0rsnClVL6OCaasqDQtWdI="
+                android:textColor="@color/pure_black"
+                android:textColorHint="@color/hint_text_gray"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/txt_light_gray"
+                android:visibility="gone" />
+
+
+            <LinearLayout
+                android:id="@+id/btn_ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/ic_new_button_shadow"
+                android:elevation="10dp"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:stateListAnimator="@null">
+
+
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/body_iv"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="center"
+
+                    android:padding="10dp"
+                    android:text="Start for demo "
+                    android:textAllCaps="true"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold"
+
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

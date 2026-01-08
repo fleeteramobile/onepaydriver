@@ -1,0 +1,73 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/lay_splash"
+    android:layout_width="fill_parent"
+    android:background="@color/pure_white"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/rootlay"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginEnd="20dp"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:scaleType="fitXY"-->
+<!--            android:src="@drawable/ic_login_new">-->
+
+
+<!--        </ImageView>    -->
+
+    <ImageView
+            android:id="@+id/rootlay"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher_ride_logic"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/rootlay"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginEnd="20dp"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:scaleType="fitXY"-->
+<!--            android:src="@drawable/ic_login_new"></ImageView>-->
+        <TextView
+            android:id="@+id/version_check_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="160dp"
+            android:padding="10dp"
+            android:text="Version 01"
+            android:textColor="@color/btn_accept_primary"
+            android:textSize="16dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+
+
+
+</FrameLayout>

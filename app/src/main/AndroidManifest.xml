@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.onepaytaxi.driver"
+    android:versionCode="2"
+    android:versionName="2.0">
+    <!--
+       <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- <uses-permission android:name="android.permission.CALL_PHONE" /> -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="com.onepaytaxi.driver.permission.MAPS_RECEIVE" /> <!-- <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" /> -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.onepaytaxi.driver.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="true" />
+
+    <application
+        android:name="com.onepaytaxi.driver.MyApplication"
+        android:allowBackup="false"
+        android:exported="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher_ride_logic"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="false"
+        android:theme="@style/Mymaterialact"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup,icon,theme,label"
+        tools:targetApi="m">
+        <activity
+            android:name="com.onepaytaxi.driver.settlement.SettlementActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.onepaytaxi.driver.earnings.EarningsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.onepaytaxi.driver.driverprofile.DriverProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.onepaytaxi.driver.bookings.upcomingbookings.UpcomingBookingsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.onepaytaxi.driver.bookings.activetrip.ActiveTripActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.onepaytaxi.driver.bookings.completed.CompletedTripActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.onepaytaxi.driver.bookings.BookingsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.onepaytaxi.driver.homepage.HomePageActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.onepaytaxi.driver.Login.DriverLoginActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.onepaytaxi.driver.driverlogs.DriverLogssActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.bluetaxi.driver.tripnotification.TripNotificationActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.onepaytaxi.driver.wallet.DriverWalletRechargeActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.onepaytaxi.driver.trackschdule.TrackSchduleTripActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.onepaytaxi.driver.bookings.schdule.ScheduleBookingActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.onepaytaxi.driver.triphistory.TripDetailsActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDYXuHUAbAqVa1G7eORazbmU2-K1sroCU4" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+
+        <receiver
+            android:name="com.onepaytaxi.driver.CallReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.onepaytaxi.driver.utils.SignUpWebviewAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name="com.onepaytaxi.driver.DriverRegisterActStepOne"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.onepaytaxi.driver.AddFleetAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+
+
+
+        <activity
+            android:name="com.onepaytaxi.driver.MapActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+
+
+
+        <activity
+            android:name="com.onepaytaxi.driver.Login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.onepaytaxi.driver.Login.VerificationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name="com.onepaytaxi.driver.SplashAct"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.onepaytaxi.driver.permission.DevicePermissionActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name="com.onepaytaxi.driver.WebviewAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name="com.onepaytaxi.driver.TripHistoryAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+<!--        <activity-->
+<!--            android:name=".UserLoginAct"-->
+<!--            android:launchMode="singleTask"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            android:windowSoftInputMode="adjustResize" />-->
+        <activity
+            android:name="com.onepaytaxi.driver.JobdoneAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name="com.onepaytaxi.driver.OngoingAct"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+
+        <activity
+            android:name="com.onepaytaxi.driver.FarecalcAct"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+
+
+
+
+
+
+
+
+        <activity
+            android:name="com.onepaytaxi.driver.tracklocation.TrackLocationActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait" />
+
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.files_root"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <receiver
+            android:name="com.onepaytaxi.driver.utils.NetworkStatus"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.onepaytaxi.driver.utils.GpsStatus"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.location.PROVIDERS_CHANGED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.onepaytaxi.driver.service.BackgroundCoreConfig" />
+
+        <receiver
+            android:name="com.onepaytaxi.driver.utils.BootCompletedIntentReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <!--
+  <service
+              android:name=".service.WaitingTimerRun"
+              android:stopWithTask="false" />
+        -->
+        <service
+            android:name="com.onepaytaxi.driver.service.LocationUpdate"
+            android:enabled="true"
+            android:exported="true"
+            android:foregroundServiceType="location" /> <!-- <service android:name=".service.UpdateLocation" /> -->
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="true" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+
+        <service
+            android:name="com.onepaytaxi.driver.service.ForegroundEnablingService"
+            android:enabled="true"
+            android:exported="false" />
+        <!--
+ <service android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        -->
+        <service
+            android:name="com.onepaytaxi.driver.service.FirebaseService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name="com.onepaytaxi.driver.DeleteAccountActivity" />
+
+
+
+        <activity android:name="com.onepaytaxi.driver.MapZoomAct" />
+
+
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

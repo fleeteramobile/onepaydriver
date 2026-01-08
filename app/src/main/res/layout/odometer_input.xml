@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/odameter_heading"
+        style="@style/textview_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+
+        android:layout_weight="1"
+        android:gravity="center"
+
+        android:text="Accept Reading "
+        android:textColor="@color/black"
+
+
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+
+        style="@style/edittext_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+
+
+        android:gravity="center"
+        android:text="Enter Odometer Reading "
+
+
+        android:textColor="@color/black"
+
+
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+
+        style="@style/edittext_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/start_value"
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
+
+
+        android:gravity="center"
+        android:text=" "
+
+
+        android:textColor="@color/black"
+
+
+        />
+
+
+    <HorizontalScrollView
+        android:id="@+id/otp_lay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linelay"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layoutDirection="ltr"
+        android:orientation="horizontal"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@+id/linelay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pass_txt"
+
+                >
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    style="@style/InputLayoutOuterbox"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:background="#F5F9FE"
+                    app:hintEnabled="false"
+
+                    app:passwordToggleEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/verifyno1Txt"
+                        style="@style/ProfileEditText"
+                        android:layout_width="match_parent"
+                        android:cursorVisible="true"
+
+                        android:digits="0123456789"
+
+                        android:gravity="center"
+                        android:hint="Enter odometer values"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+
+                        android:maxLength="7"
+
+                        android:textColor="@color/black"
+                        android:textCursorDrawable="@drawable/color_cursor"
+                        android:textSize="16dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="45dp"
+                android:layout_height="65dp"
+                android:layout_below="@+id/pass_txt"
+                android:layout_marginLeft="10dp"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    style="@style/InputLayoutOuterbox"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="#F5F9FE"
+                    app:hintEnabled="false"
+
+                    app:passwordToggleEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/verifyno2Txt"
+                        style="@style/ProfileEditText"
+                        android:layout_width="match_parent"
+
+
+                        android:digits="0123456789"
+
+                        android:gravity="center"
+                        android:hint="."
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+
+                        android:maxLength="1"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:textCursorDrawable="@drawable/color_cursor"
+                        android:textSize="24dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="45dp"
+                android:layout_height="65dp"
+                android:layout_below="@+id/pass_txt"
+                android:layout_marginLeft="10dp"
+                android:visibility="gone"
+
+                >
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    style="@style/InputLayoutOuterbox"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="#F5F9FE"
+                    app:hintEnabled="false"
+
+                    app:passwordToggleEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/verifyno3Txt"
+                        style="@style/ProfileEditText"
+                        android:layout_width="match_parent"
+
+
+                        android:digits="0123456789"
+
+                        android:gravity="center"
+                        android:hint="."
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="1"
+
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:textCursorDrawable="@drawable/color_cursor"
+                        android:textSize="24dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="45dp"
+                android:layout_height="65dp"
+                android:layout_below="@+id/pass_txt"
+                android:layout_marginLeft="10dp"
+
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    style="@style/InputLayoutOuterbox"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="#F5F9FE"
+                    app:hintEnabled="false"
+
+                    app:passwordToggleEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/verifyno4Txt"
+                        style="@style/ProfileEditText"
+                        android:layout_width="match_parent"
+
+
+                        android:digits="0123456789"
+                        android:gravity="center"
+                        android:hint="."
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="1"
+
+
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:textCursorDrawable="@drawable/color_cursor"
+                        android:textSize="24dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="45dp"
+                android:layout_height="65dp"
+                android:layout_below="@+id/pass_txt"
+                android:layout_marginLeft="10dp"
+
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    style="@style/InputLayoutOuterbox"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="#F5F9FE"
+                    app:hintEnabled="false"
+
+                    app:passwordToggleEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/verifyno5Txt"
+                        style="@style/ProfileEditText"
+                        android:layout_width="match_parent"
+
+
+                        android:digits="0123456789"
+                        android:gravity="center"
+                        android:hint="."
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="1"
+
+
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:textCursorDrawable="@drawable/color_cursor"
+                        android:textSize="24dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="45dp"
+                android:layout_height="65dp"
+                android:layout_below="@+id/pass_txt"
+                android:layout_marginLeft="10dp"
+
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    style="@style/InputLayoutOuterbox"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="#F5F9FE"
+                    app:hintEnabled="false"
+
+                    app:passwordToggleEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/verifyno6Txt"
+                        style="@style/ProfileEditText"
+                        android:layout_width="match_parent"
+
+
+                        android:digits="0123456789"
+                        android:gravity="center"
+                        android:hint="."
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="1"
+
+
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:textCursorDrawable="@drawable/color_cursor"
+                        android:textSize="24dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="45dp"
+                android:layout_height="65dp"
+                android:layout_below="@+id/pass_txt"
+                android:layout_marginLeft="10dp"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    style="@style/InputLayoutOuterbox"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="#F5F9FE"
+                    app:hintEnabled="false"
+
+                    app:passwordToggleEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/verifyno7Txt"
+                        style="@style/ProfileEditText"
+                        android:layout_width="match_parent"
+
+
+                        android:digits="0123456789"
+                        android:gravity="center"
+                        android:hint="."
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="1"
+
+
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:textCursorDrawable="@drawable/color_cursor"
+                        android:textSize="24dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:background="@drawable/ic_schdule_button_shadow"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/body_iv"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:padding="10dp"
+
+            android:text="Confirm"
+            android:textAllCaps="true"
+
+            android:textColor="@color/white"
+
+
+            android:textStyle="bold"
+
+
+            />
+
+    </LinearLayout>
+</LinearLayout>

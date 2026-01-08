@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Amount"
+
+        android:textColor="@color/pure_black"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+        android:layout_gravity="center"
+
+        android:textStyle="bold" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lay_pick"
+        android:background="@drawable/spinner_back"
+        android:paddingTop="10dp"
+
+
+        android:layout_marginTop="15dp"
+
+        android:paddingBottom="10dp"
+        >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/et_type"
+            style="@style/ProfileEditText"
+            android:layout_width="match_parent"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="10dp"
+            android:hint="Select Option"
+            android:textColor="@color/pure_black"
+            android:drawableRight="@drawable/ic_arrow_down"
+            android:textColorHint="#707894"
+            android:backgroundTint="@color/app_theme_main"
+
+            />
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        style="@style/InputLayoutOuterbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="15dp"
+        android:background="#F5F9FE"
+        android:hint="@string/mobileno"
+        app:hintEnabled="false"
+        app:hintTextAppearance="@color/app_theme_main"
+        app:hintTextColor="@color/app_theme_main"
+        app:passwordToggleEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_place_name"
+            style="@style/ProfileEditText"
+            android:layout_width="match_parent"
+
+
+            android:hint="Enter the place name"
+
+            android:imeOptions="actionGo"
+
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pass_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        app:hintEnabled="false"
+        style="@style/InputLayoutOuterbox"
+        android:layout_marginTop="15dp"
+        app:passwordToggleEnabled="false"
+
+        android:background="#F5F9FE">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_amount"
+            style="@style/ProfileEditText"
+            android:layout_width="match_parent"
+
+            android:imeOptions="actionGo"
+            android:hint="Enter the amount"
+
+            android:inputType="numberDecimal"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/btn_add_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:stateListAnimator="@null"
+        android:elevation="10dp"
+        android:background="@drawable/ic_new_button_shadow"
+        android:orientation="horizontal">
+
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/body_iv"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+
+            android:textAllCaps="true"
+            android:padding="10dp"
+            android:text="ADD"
+            android:textColor="@color/pure_white"
+            android:textStyle="bold"
+
+            />
+    </LinearLayout>
+</LinearLayout>

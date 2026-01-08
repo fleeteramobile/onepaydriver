@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#80000000">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:background="@color/pure_black" >
+    <TextView
+        android:id="@+id/tv_check_connection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="No Internet Available"
+        android:textColor="@color/pure_white"
+        android:padding="15dp"
+        android:gravity="center"
+        android:layout_weight="2"/>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_emergency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/emergency_contact_btn"
+            android:gravity="center"
+            android:layout_gravity="center|end"
+            android:maxWidth="150dp"
+            android:minHeight="30dp"
+            android:minWidth="70dp"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:text="@string/emergency"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:visibility="visible"
+            android:textColor="@color/pure_white"/>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

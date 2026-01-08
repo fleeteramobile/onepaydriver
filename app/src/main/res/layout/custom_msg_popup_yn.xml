@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/clr_transparent"
+
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+
+        android:background="@drawable/reason_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="10dp">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/msg_txt"
+                style="@style/edittext_style"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/app_text_primary"
+                android:textSize="16dp"
+
+
+                />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/txt_light_gray"
+            android:visibility="gone" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/nobtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/ic_new_button_shadow_black"
+                android:orientation="horizontal"
+
+                android:paddingLeft="10dp"
+
+                android:paddingRight="10dp"
+                android:stateListAnimator="@null">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtno"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/inter_normal"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Ok"
+                    android:textAllCaps="true"
+                    android:textColor="@color/pure_white"
+
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/yesbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/ic_new_button_shadow"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+
+                android:paddingRight="10dp"
+                android:stateListAnimator="@null">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtyes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/inter_normal"
+                    android:gravity="center"
+
+                    android:padding="8dp"
+                    android:text="Ok"
+                    android:textAllCaps="true"
+                    android:textColor="@color/pure_white"
+
+
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,23 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This is the line -->
+    <item
+        android:bottom=".5dp"
+        android:left=".5dp"
+        android:right=".5dp"
+        android:top=".5dp">
+        <shape>
+
+            <corners
+                android:topLeftRadius="25dp"
+                android:topRightRadius="25dp"/>
+
+            <gradient
+                android:endColor="#f8f8f8"
+                android:startColor="#f8f8f8"
+                android:type="linear" />
+        </shape>
+
+    </item>
+    <!-- This is the main color -->
+
+</layer-list>

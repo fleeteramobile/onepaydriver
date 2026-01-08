@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:id="@+id/outstation_trip_lay"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:visibility="visible"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:gravity="center_vertical"
+        android:weightSum="3">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/base_fare"
+            android:layout_margin="15dp"
+            android:textColor="@color/pure_black" />
+
+        <TextView
+            android:id="@+id/BaseFare"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text=""
+            android:layout_margin="15dp"
+            android:textColor="@color/pure_black" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:visibility="gone">
+
+        <TextView
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/min_trav"
+            android:textColor="@color/pure_black" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text=""
+            android:textColor="@color/pure_black" />
+    </LinearLayout>
+
+    <include layout="@layout/normal_receipt_lay"
+        android:visibility="gone"/>
+    <include layout="@layout/outstation_receipet_lay"
+        android:visibility="gone"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/txt_light_gray" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:gravity="center_vertical"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/sub_total"
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:id="@+id/subtotal_val"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text=""
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:id="@+id/cancelFareLayOut"
+        android:gravity="center_vertical"
+        android:weightSum="3">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_margin="15dp"
+            android:text="@string/cancellation_fare"
+            android:textColor="@color/pure_black" />
+
+        <TextView
+            android:id="@+id/cancelFeeVal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="12"
+            android:textColor="@color/hint_text_gray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:gravity="center_vertical"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/promotion"
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:id="@+id/promotion_val"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text=""
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/txt_light_gray" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:gravity="center_vertical"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/trip_cost"
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:id="@+id/tripcost_val"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text=""
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:gravity="center_vertical"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/taxLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/Tax"
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:id="@+id/tax_val"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text=""
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/txt_light_gray" />
+    <LinearLayout
+        android:id="@+id/evening_farelay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/even_charge"
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:id="@+id/evefare_val"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text=""
+            android:layout_margin="15dp"
+            android:textColor="@color/pure_black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/night_farelay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/nit_fare"
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:id="@+id/night_val"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text=""
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:gravity="center_vertical"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/net_total"
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"
+            />
+
+        <TextView
+            android:id="@+id/nettotal_val"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text=""
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:gravity="center_vertical"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/wallet_amt"
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:id="@+id/WalletAmt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text=""
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:gravity="center_vertical"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/paid_amt"
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:id="@+id/PaidAmt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text=""
+            android:layout_margin="15dp"
+            android:textColor="@color/pure_black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:gravity="center_vertical"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/payment_type"
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:id="@+id/Paymenttype"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="cash"
+            android:textColor="@color/pure_black"
+            android:layout_margin="15dp"/>
+    </LinearLayout>
+
+</LinearLayout>

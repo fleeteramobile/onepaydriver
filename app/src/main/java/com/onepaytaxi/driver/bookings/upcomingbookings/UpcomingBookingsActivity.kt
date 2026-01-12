@@ -1,5 +1,7 @@
 package com.onepaytaxi.driver.bookings.upcomingbookings
 
+import androidx.appcompat.app.AlertDialog
+
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
@@ -208,30 +210,80 @@ class UpcomingBookingsActivity : AppCompatActivity(), UpcomeingTrip, ClickInterf
     }
 
     override fun startTrip(_category: ResponseUpcomingTrips.Detail.PendingBooking) {
-        val intent = Intent(this, TrackSchduleTripActivity::class.java)
-        intent.putExtra("schdule_trip_id", _category.passengers_log_id)
-        intent.putExtra("pick_up_lat", _category.pickup_latitude)
-        intent.putExtra("pick_up_lang", _category.pickup_longitude)
-        intent.putExtra("booking_Type", "3")
-        startActivity(intent)
 
+        val pickupLat = _category.pickup_latitude.toDoubleOrNull()
+        val pickupLng = _category.pickup_longitude.toDoubleOrNull()
+        val dropLat = _category.drop_latitude.toDoubleOrNull()
+        val dropLng = _category.drop_longitude.toDoubleOrNull()
+
+        if (pickupLat == null || pickupLng == null || dropLat == null || dropLng == null) {
+            Toast.makeText(this, "Invalid location data", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (_category.trip_approval == "0") {
+
+            // 🔴 Redirect to Google Maps
+            val mapUri = Uri.parse(
+                "https://www.google.com/maps/dir/?api=1" +
+                        "&origin=$pickupLat,$pickupLng" +
+                        "&destination=$dropLat,$dropLng" +
+                        "&travelmode=driving"
+            )
+
+            val mapIntent = Intent(Intent.ACTION_VIEW, mapUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+
+            if (mapIntent.resolveActivity(packageManager) != null) {
+                startActivity(mapIntent)
+            } else {
+                startActivity(Intent(Intent.ACTION_VIEW, mapUri))
+            }
+
+        } else {
+
+            // 🟢 Start Trip Activity
+            val intent = Intent(this, TrackSchduleTripActivity::class.java)
+            intent.putExtra("schdule_trip_id", _category.passengers_log_id)
+            intent.putExtra("pick_up_lat", _category.pickup_latitude)
+            intent.putExtra("pick_up_lang", _category.pickup_longitude)
+            intent.putExtra("booking_Type", "3")
+            startActivity(intent)
+        }
     }
+
 
     override fun decline(_category: ResponseUpcomingTrips.Detail.PendingBooking) {
 
-        try {
-            val j = JSONObject()
-            j.put("trip_id", _category.passengers_log_id)
-            j.put("driver_id", SessionSave.getSession("Id", this))
-            j.put("model_id", SessionSave.getSession("taxi_id", this))
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("Cancel Trip")
+            .setMessage(
+                "Cancellation charges of ₹500 will be applied if you cancel this trip.\n\nDo you want to continue?"
+            )
+            .setPositiveButton("Yes") { d, _ ->
+                try {
+                    val j = JSONObject()
+                    j.put("trip_id", _category.passengers_log_id)
+                    j.put("driver_id", SessionSave.getSession("Id", this))
+                    j.put("model_id", SessionSave.getSession("taxi_id", this))
 
-            val canceltrip_url = "type=show_booking_driver_cancel"
-            CancelTrip(canceltrip_url, j)
-        } catch (e: java.lang.Exception) {
-            e.printStackTrace()
-        }
+                    val canceltripUrl = "type=show_booking_driver_cancel"
+                    CancelTrip(canceltripUrl, j)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                d.dismiss()
+            }
+            .setNegativeButton("No") { d, _ ->
+                d.dismiss()
+            }
+            .setCancelable(false)
+            .create()
 
+        dialog.show()
     }
+
+
 
     override fun callCustomer(_category: ResponseUpcomingTrips.Detail.PendingBooking) {
         if(_category.trip_approval.equals("0"))

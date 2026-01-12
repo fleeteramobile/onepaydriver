@@ -20,6 +20,7 @@ data class ResponseUpcomingTrips(
             val drivername: String,
             val drop_latitude: String,
             val drop_location: String,
+            val os_trip_type: String,
             val drop_longitude: String,
             val trip_approval: String,
             val dynamic_fare: Int,

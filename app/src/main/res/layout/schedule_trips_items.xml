@@ -77,7 +77,7 @@
                 android:paddingEnd="8dp"
                 android:paddingBottom="4dp"
                 android:text="Cash"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@id/imageViewProfile"
                 app:layout_constraintTop_toBottomOf="@id/trip_id" />
@@ -186,6 +186,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewDropOffLabel" />
+            <TextView
+                android:id="@+id/trip_track"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_button_blue"
+                android:padding="15dp"
+                android:text="Track Location"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewDropOffAddress" />
 
 
             <TextView
@@ -206,6 +220,22 @@
                 card_view:layout_constraintEnd_toEndOf="parent"
 
                 app:layout_constraintTop_toBottomOf="@id/textViewDropOffAddress" />
+
+            <TextView
+                android:id="@+id/textViewNote"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:text="Hill charges, toll gate fees, and permit charges will be charged additionally."
+                android:textColor="@android:color/black"
+                android:textSize="11sp"
+                android:lineSpacingExtra="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/trip_accept" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

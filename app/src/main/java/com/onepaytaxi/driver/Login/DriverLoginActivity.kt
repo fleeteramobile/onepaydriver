@@ -14,6 +14,7 @@ import com.onepaytaxi.driver.OngoingAct
 import com.onepaytaxi.driver.R
 import com.onepaytaxi.driver.data.CommonData
 import com.onepaytaxi.driver.databinding.ActivityDriverLoginBinding
+import com.onepaytaxi.driver.driverregister.DriverRegisterActivity
 import com.onepaytaxi.driver.homepage.HomePageActivity
 import com.onepaytaxi.driver.interfaces.APIResult
 import com.onepaytaxi.driver.interfaces.ClickInterface
@@ -124,7 +125,7 @@ class DriverLoginActivity : AppCompatActivity(), ClickInterface {
         // Handle Sign Up click
         binding.signupTextLink.setOnClickListener {
             // Navigate to the Sign Up screen
-            val signUpIntent = Intent(this, LoginActivity::class.java) // Assuming SignUpActivity exists
+            val signUpIntent = Intent(this, DriverRegisterActivity::class.java) // Assuming SignUpActivity exists
             startActivity(signUpIntent)
         }
     }

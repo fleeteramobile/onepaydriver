@@ -93,9 +93,9 @@
                 android:paddingTop="4dp"
                 android:paddingEnd="8dp"
                 android:paddingBottom="4dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:text="Discount"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@id/textViewApplePay"
                 app:layout_constraintTop_toTopOf="@id/textViewApplePay" />
@@ -201,13 +201,30 @@
                 android:layout_marginTop="15dp"
                 android:background="#797979"/>
 
+            <TextView
+                android:id="@+id/textViewNote"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
+                android:text="Hill charges, toll gate fees, and permit charges will be charged additionally."
+                android:textColor="@android:color/black"
+                android:textSize="11sp"
+                android:lineSpacingExtra="2dp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dev_line" />
+
             <LinearLayout
                 android:id="@+id/lay_book_later"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
 
-                card_view:layout_constraintTop_toBottomOf="@+id/dev_line"
+                card_view:layout_constraintTop_toBottomOf="@+id/textViewNote"
 
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -278,6 +295,9 @@
                     android:textColor="#F44336"
                     android:textSize="10dp" />
             </LinearLayout>
+
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

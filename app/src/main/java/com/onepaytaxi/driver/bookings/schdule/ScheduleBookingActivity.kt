@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
@@ -220,6 +221,33 @@ class ScheduleBookingActivity : AppCompatActivity(), ScheduleTrip, ClickInterfac
 
 
        // accpetSchduleTrip()
+    }
+
+    override fun trackLocation(_category: ResponseNewSchduleBooking.Detail.ShowBooking) {
+        val pickupLat = _category.pickup_latitude.toDoubleOrNull()
+        val pickupLng = _category.pickup_longitude.toDoubleOrNull()
+        val dropLat = _category.drop_latitude.toDoubleOrNull()
+        val dropLng = _category.drop_longitude.toDoubleOrNull()
+
+        if (pickupLat == null || pickupLng == null || dropLat == null || dropLng == null) {
+            Toast.makeText(this, "Invalid location data", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val mapUri = Uri.parse(
+            "https://www.google.com/maps/dir/?api=1" +
+                    "&origin=$pickupLat,$pickupLng" +
+                    "&destination=$dropLat,$dropLng" +
+                    "&travelmode=driving"
+        )
+
+        val mapIntent = Intent(Intent.ACTION_VIEW, mapUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+
+        if (mapIntent.resolveActivity(packageManager) != null) {
+            startActivity(mapIntent)
+        } else {
+            startActivity(Intent(Intent.ACTION_VIEW, mapUri))
+        }
     }
 
     private fun checkWalletBalance() {

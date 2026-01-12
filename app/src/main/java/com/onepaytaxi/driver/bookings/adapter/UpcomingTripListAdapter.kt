@@ -32,6 +32,7 @@ class UpcomingTripListAdapter(
         var trip_id: TextView
         var textViewPrice: TextView
         var textViewDistance: TextView
+        var textViewDiscount: TextView
         var textViewPickupAddress: TextView
         var textViewDropOffAddress: TextView
         var btn_get_in_contact: TextView
@@ -46,6 +47,7 @@ class UpcomingTripListAdapter(
             textViewUserName = itemView.findViewById(R.id.textViewUserName) as TextView
             trip_id = itemView.findViewById(R.id.trip_id) as TextView
             textViewApplePay = itemView.findViewById(R.id.textViewApplePay) as TextView
+            textViewDiscount = itemView.findViewById(R.id.textViewDiscount) as TextView
             textViewPrice = itemView.findViewById(R.id.textViewPrice) as TextView
             textViewPickupAddress = itemView.findViewById(R.id.textViewPickupAddress) as TextView
             textViewDistance = itemView.findViewById(R.id.textViewDistance) as TextView
@@ -73,7 +75,8 @@ class UpcomingTripListAdapter(
 
 
         holder.textViewUserName.setText("${upComingList[position].passenger_name} ")
-        holder.textViewApplePay.setText("${upComingList[position].payment_type} ")
+        holder.textViewDiscount.setText("${upComingList[position].pickup_time.toString()} ")
+
         holder.trip_id.setText("#${upComingList[position]._id.toString()} ")
         val currencySymbol =
             SessionSave.getSession("site_currency", mContext) ?: "₹" // Provide a default if null
@@ -85,10 +88,18 @@ class UpcomingTripListAdapter(
 
         if(upComingList[position].trip_approval.equals("0"))
         {
-            holder.btn_start.setText("Waiting for admin approval")
+            holder.btn_start.setText("Track Trip")
         }
         else{
             holder.btn_start.setText("Start Trip")
+        }
+
+        if(upComingList[position].os_trip_type.equals("1"))
+        {
+            holder.textViewApplePay.setText("Oneway")
+        }
+        else{
+            holder.textViewApplePay.setText("Round Trip")
         }
 
 
@@ -101,9 +112,9 @@ class UpcomingTripListAdapter(
         }
         holder.btn_start.setOnClickListener {
 
-            if (upComingList[position].trip_approval.equals("1")) {
+
                 completedTrip.startTrip(upComingList[position])
-            }
+
 
 
 

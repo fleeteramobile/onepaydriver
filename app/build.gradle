@@ -81,9 +81,7 @@ buildFeatures{
 }
 dependencies {
 
-    implementation project(path: ':library')
 
-    implementation project(path:':sospluginmodlue')
 
 
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -126,6 +124,9 @@ dependencies {
     // Room components
     implementation 'androidx.room:room-runtime:2.2.5'
     implementation 'androidx.cardview:cardview:1.0.0'
+
+
+
     //implementation 'androidx.activity:activity:1.8.0'
 
 

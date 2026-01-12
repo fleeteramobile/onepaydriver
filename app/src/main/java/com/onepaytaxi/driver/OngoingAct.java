@@ -123,7 +123,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.maps.android.PolyUtil;
-import com.mayan.sospluginmodlue.service.SOSService;
+
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -2275,7 +2275,7 @@ Boolean enable_os_waiting_fare = false;
     private void startSOSService() {
         SessionSave.saveSession("sos_id", SessionSave.getSession("Id", OngoingAct.this), OngoingAct.this);
         SessionSave.saveSession("user_type", "d", OngoingAct.this);
-        startService(new Intent(OngoingAct.this, SOSService.class));
+      //  startService(new Intent(OngoingAct.this, SOSService.class));
     }
 
     private ArrayList<StopData> parseStop(String path) {

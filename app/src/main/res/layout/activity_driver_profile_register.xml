@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/slide_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+
+            <ImageView
+                android:id="@+id/back_trip_details"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                tools:ignore="MissingConstraints" />
+
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:textColor="#1A237E"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_first_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:hint="First Name"
+            app:boxBackgroundColor="#F5F9FE"
+
+            app:boxStrokeWidth="0dp"
+            app:layout_constraintTop_toBottomOf="@id/header_title">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_last_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Last Name"
+            app:boxBackgroundColor="#F5F9FE"
+
+            app:boxStrokeWidth="0dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_first_name">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Email Address"
+            app:boxBackgroundColor="#F5F9FE"
+
+            app:boxStrokeWidth="0dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_last_name">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_address"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Full Address"
+            app:boxBackgroundColor="#F5F9FE"
+
+            app:boxStrokeWidth="0dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_author_id"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Aadhaar Number"
+            app:boxBackgroundColor="#F5F9FE"
+
+            app:boxStrokeWidth="0dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_address">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_driver_aadhar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_license_id"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Driver License ID"
+            app:boxBackgroundColor="#F5F9FE"
+
+            app:boxStrokeWidth="0dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_author_id">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_driver_license"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_dob"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Date of Birth"
+            app:startIconDrawable="@android:drawable/ic_menu_my_calendar"
+            app:startIconTint="#1A237E"
+            app:boxBackgroundColor="#F5F9FE"
+
+            app:boxStrokeWidth="0dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_license_id">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:clickable="true"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
+                android:textColor="#212121" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_license_exp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="License Expiry Date"
+            app:startIconDrawable="@android:drawable/ic_menu_my_calendar"
+            app:startIconTint="#1A237E"
+            app:boxBackgroundColor="#F5F9FE"
+
+            app:boxStrokeWidth="0dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_dob">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_driver_license_exp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:clickable="true"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
+                android:textColor="#212121" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txt_doc_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Required Documents"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_license_exp" />
+
+        <FrameLayout
+            android:id="@+id/frame_lic_front"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_bg_normal"
+            app:layout_constraintTop_toBottomOf="@id/txt_doc_label">
+            <LinearLayout
+                android:id="@+id/ll_driver_lic_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ImageView android:layout_width="35dp" android:layout_height="35dp" android:src="@drawable/folder" app:tint="#1A237E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Upload License Front" android:textColor="#1A237E" android:textSize="12sp" />
+            </LinearLayout>
+            <ImageView android:id="@+id/imgV_license" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="fitCenter" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frame_lic_back"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/edittext_bg_normal"
+            app:layout_constraintTop_toBottomOf="@id/frame_lic_front">
+            <LinearLayout
+                android:id="@+id/ll_driver_lic_back_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ImageView android:layout_width="35dp" android:layout_height="35dp" android:src="@drawable/folder" app:tint="#1A237E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Upload License Back" android:textColor="#1A237E" android:textSize="12sp" />
+            </LinearLayout>
+            <ImageView android:id="@+id/imgV_license_back" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="fitCenter" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frame_profile"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/edittext_bg_normal"
+            app:layout_constraintTop_toBottomOf="@id/frame_lic_back">
+            <LinearLayout
+                android:id="@+id/ll_profile_pic_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ImageView android:layout_width="35dp" android:layout_height="35dp" android:src="@drawable/folder" app:tint="#1A237E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Upload Profile Photo" android:textColor="#1A237E" android:textSize="12sp" />
+            </LinearLayout>
+            <ImageView android:id="@+id/imgV_profile" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="fitCenter" />
+        </FrameLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_nxt"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="CONTINUE"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:backgroundTint="@color/app_theme_main"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frame_profile" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -20,7 +20,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.mayan.sospluginmodlue.service.SOSService;
 import com.onepaytaxi.driver.R;
 import com.onepaytaxi.driver.SplashAct;
 import com.onepaytaxi.driver.data.CommonData;
@@ -239,11 +238,11 @@ public class NetworkStatus extends BroadcastReceiver {
     }
 
     private void startSOSService(Context context) {
-        if (!SessionSave.getSession("Id", context).equals("")) {
-            SessionSave.saveSession("sos_id", SessionSave.getSession("Id", context), context);
-            SessionSave.saveSession("user_type", "d", context);
-            context.startService(new Intent(context, SOSService.class));
-        }
+//        if (!SessionSave.getSession("Id", context).equals("")) {
+//            SessionSave.saveSession("sos_id", SessionSave.getSession("Id", context), context);
+//            SessionSave.saveSession("user_type", "d", context);
+//            context.startService(new Intent(context, SOSService.class));
+//        }
     }
 
     private void createNetworkLog(Context context) {

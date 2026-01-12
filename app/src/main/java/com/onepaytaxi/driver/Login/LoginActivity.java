@@ -47,15 +47,7 @@ public class LoginActivity extends MainActivity {
     private EditText MobileNumber;
     private LinearLayout Continue_mobile,countrycode_lay;
     private ImageView back_click;
-    private boolean isFacebookLogin = false;
-    String wantPermission = Manifest.permission.READ_PHONE_STATE;
-    private static final int PERMISSION_REQUEST_CODE = 1;
-    private final String simPhoneNo1 = "";
-    private final String simPhoneNo2 = "";
-    private final String simphonecc1 = "";
-    private final String simphonecc2 = "";
-    private final String simphonecode1 = "";
-    private final String simphonecode2 = "";
+
 
 
 
@@ -95,9 +87,7 @@ public class LoginActivity extends MainActivity {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(MobileNumber, InputMethodManager.SHOW_IMPLICIT);
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            isFacebookLogin = extras.getBoolean("isfacebooklogin");
-        }
+
 
 
         MobileNumber.addTextChangedListener(new TextWatcher() {
@@ -117,27 +107,7 @@ public class LoginActivity extends MainActivity {
 
                         if (s.equalsIgnoreCase("0")||s.equalsIgnoreCase("2")||s.equalsIgnoreCase("3")||s.equalsIgnoreCase("4")||s.equalsIgnoreCase("5")) {
                             MobileNumber.setText("");
-                       //ShowToast(LoginActivity.this, NC.getResources().getString(R.string.invalid_mobile_number));
-//                            int maxLength = 10;<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-//            android:layout_width="fill_parent"
-//            android:layout_height="56dp"
-//            android:baselineAligned="false"
-//
-//            android:visibility="visible">
-//            <!--  -->
-//
-//            <ImageView
-//                android:id="@+id/back_click"
-//                android:layout_width="wrap_content"
-//                android:layout_height="wrap_content"
-//                android:background="?selectableItemBackgroundBorderless"
-//                app:srcCompat="@drawable/back"
-//                android:layout_marginLeft="4dp"
-//                android:padding="12dp"/>
-//        </LinearLayout>
-//                            InputFilter[] FilterArray = new InputFilter[1];
-//                            FilterArray[0] = new InputFilter.LengthFilter(maxLength);
-//                            MobileNumber.setFilters(FilterArray);
+
                         } else {
                             int maxLength = 16;
                             InputFilter[] FilterArray = new InputFilter[1];
@@ -148,13 +118,6 @@ public class LoginActivity extends MainActivity {
 
                     }
 
-
-//                    if (s.equalsIgnoreCase("0")) {
-//                        MobileNumber.setText("");
-//                        ShowToast(LoginActivity.this, "Country code already added");
-//                    } else {
-//
-//                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -391,72 +354,5 @@ public class LoginActivity extends MainActivity {
      * This class used to update the mobileno to the api
      * </p>
      */
-    private class MobilenumberUpdate implements APIResult {
-        public MobilenumberUpdate(final String url, final JSONObject data) {
-            // TODO Auto-generated constructor stub
-            new APIService_Retrofit_JSON(LoginActivity.this, this, data, false).execute(url);
-        }
 
-        @Override
-        public void getResult(final boolean isSuccess, final String result) {
-            // TODO Auto-generated method stub
-            try {
-                if (isSuccess) {
-                    final JSONObject json = new JSONObject(result);
-//                    if (json.getInt("status") == 1) {
-//                        SessionSave.saveSession("Register", "", LoginActivity.this);
-//                        SessionSave.saveSession("Email", json.getJSONObject("detail").getString("email"), LoginActivity.this);
-//                        SessionSave.saveSession(PASS_ID, json.getJSONObject("detail").getString("id"), LoginActivity.this);
-//                        SessionSave.saveSession("ProfileImage", json.getJSONObject("detail").getString("profile_image"), LoginActivity.this);
-//                        SessionSave.saveSession(PASS_NAME, json.getJSONObject("detail").getString("name"), LoginActivity.this);
-//                        SessionSave.saveSession("Phone", json.getJSONObject("detail").getString("phone"), LoginActivity.this);
-//                        SessionSave.saveSession("About", json.getJSONObject("detail").getString("aboutpage_description"), LoginActivity.this);
-////                        SessionSave.saveSession("Currency", json.getJSONObject("detail").getString("site_currency") + " ", LoginActivity.this);
-//                        SessionSave.saveSession(CREDIT_CARD, "" + json.getJSONObject("detail").getString("credit_card_status"), LoginActivity.this);
-//                        SessionSave.saveSession("RefCode", json.getJSONObject("detail").getString("referral_code"), LoginActivity.this);
-//                        SessionSave.saveSession("RefAmount", json.getJSONObject("detail").getString("referral_code_amount"), LoginActivity.this);
-//
-//                        if (json.getJSONObject("detail").getString("split_fare").equals("1"))
-//                            SessionSave.saveSession(CommonData.isSplitOn, true, LoginActivity.this);
-//                        else
-//                            SessionSave.saveSession(CommonData.isSplitOn, false, LoginActivity.this);
-//                        SessionSave.saveSession(CommonData.isFavDriverOn, true, LoginActivity.this);
-//                        try {
-//                            if (LoginActivity.this != null) {
-//                                showLoading(LoginActivity.this);
-//                                if (json.getJSONObject("detail").has("SKIP_CREDIT_CARD") && json.getJSONObject("detail").getString("SKIP_CREDIT_CARD").equals("1"))
-//                                    SessionSave.saveSession("SKIP_CREDIT_CARD", true, LoginActivity.this);
-//                                else
-//                                    SessionSave.saveSession("SKIP_CREDIT_CARD", false, LoginActivity.this);
-//                                final Intent i = new Intent(LoginActivity.this, MainHomeFragmentActivity.class);
-//                                i.putExtra("alert_message", json.getString("message"));
-//                                startActivity(i);
-//                                finish();
-//                            }
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                    } else {
-//                        runOnUiThread(new Runnable() {
-//                            public void run() {
-//                                try {
-//                                    ShowToast(LoginActivity.this, json.getString("message"));
-//                                } catch (JSONException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                        });
-//                    }
-                } else {
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                           // ShowToast(LoginActivity.this, NC.getString(R.string.server_error));
-                        }
-                    });
-                }
-            } catch (final Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

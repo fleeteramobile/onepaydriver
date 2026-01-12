@@ -29,6 +29,7 @@ class ScheduleTripListAdapter(
 
         var textViewUserName: TextView
         var trip_accept: TextView
+        var trip_track: TextView
         var textViewApplePay: TextView
         var trip_id: TextView
         var textViewPrice: TextView
@@ -50,6 +51,7 @@ class ScheduleTripListAdapter(
             textViewDropOffAddress = itemView.findViewById(R.id.textViewDropOffAddress) as TextView
             completed_trip_lay = itemView.findViewById(R.id.completed_trip_lay) as CardView
             trip_accept = itemView.findViewById(R.id.trip_accept) as TextView
+            trip_track = itemView.findViewById(R.id.trip_track) as TextView
 
 
         }
@@ -91,6 +93,13 @@ class ScheduleTripListAdapter(
 
 
             scheduleTrip.acceptScheduleTrip(upComingList[position])
+
+
+            }
+        holder.trip_track.setOnClickListener {
+
+
+            scheduleTrip.trackLocation(upComingList[position])
 
 
             }

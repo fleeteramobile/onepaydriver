@@ -2,6 +2,8 @@ package com.onepaytaxi.driver;
 
 import com.google.android.libraries.places.api.Places;
 import com.onepaytaxi.driver.data.CommonData;
+import com.onepaytaxi.driver.imageupload.RetrofitClient;
+import com.onepaytaxi.driver.pushmessage.AppVisibility;
 import com.onepaytaxi.driver.service.CoreClient;
 import com.onepaytaxi.driver.service.NodeServiceGenerator;
 import com.onepaytaxi.driver.service.ServiceGenerator;
@@ -31,7 +33,8 @@ public class MyApplication extends MultiDexApplication {
         super.onCreate();
 
         mInstance = this;
-
+        RetrofitClient.INSTANCE.init(this);
+        registerActivityLifecycleCallbacks(AppVisibility.INSTANCE);
 
         setPlaceApiKey(getResources().getString(R.string.googleID));
 

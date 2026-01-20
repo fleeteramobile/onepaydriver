@@ -6,20 +6,14 @@ import android.app.Dialog
 import android.content.ContentValues
 import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
-
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.onepaytaxi.driver.R
 import com.onepaytaxi.driver.data.CommonData
@@ -43,165 +37,172 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
-import java.io.FileOutputStream
 import java.util.Calendar
 
-class DriverProfileRegisterActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
+class DriverProfileRegisterActivity : AppCompatActivity(),
     ClickInterface {
-    private var dialog1:android.app.Dialog? = null
-    // Form Data
+
+    lateinit var binding: ActivityDriverProfileRegisterBinding
+
     private var gender = "male"
-    private var licenseImgUrl: String? = ""
-    private var profileImgUrl: String? = ""
-    private var licenseBackImgUrl: String? = ""
-    private var imageType = 1 // 1: Front, 2: Back, 3: Profile
+    private var imageType = 1 // 1-License Front, 2-License Back, 3-Profile
     private var driver_id = ""
-    // Dialogs
+    private var licenseImgUrl: String? = ""
+    private var licenseBackImgUrl: String? = ""
+    private var profileImgUrl: String? = ""
+    private var driver_aadhar_back_side: String? = ""
+    private var driver_aadhar: String? = ""
+
     private var progressDialog: Dialog? = null
-    private var imageUri: Uri? = null
+    private lateinit var cameraImageUri: Uri
+    private var dialog1: android.app.Dialog? = null
+    // -------------------- Activity Result APIs --------------------
 
-    companion object {
-        const val REQUEST_GALLERY = 1001
-        const val REQUEST_CAMERA = 1002
-    }
+    private val galleryLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            uri?.let { handleSelectedImage(it) }
+        }
 
-     lateinit var binding: ActivityDriverProfileRegisterBinding
+    private val cameraLauncher =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
+            if (success) {
+                handleSelectedImage(cameraImageUri)
+            }
+        }
+
+    // -------------------- onCreate --------------------
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDriverProfileRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-      //  setupGenderSpinner()
-       setupClickListeners()
+        setupClicks()
     }
 
-//    private fun setupGenderSpinner() {
-//        val adapter = ArrayAdapter.createFromResource(
-//            this,
-//            R.array.gender_array, android.R.layout.simple_spinner_item
-//        )
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//        binding.edtGender.adapter = adapter
-//        binding.edtGender.onItemSelectedListener = this
-//    }
+    // -------------------- Clicks --------------------
 
-private fun setupClickListeners() {
+    private fun setupClicks() {
         binding.apply {
-            // Navigation
+
             backTripDetails.setOnClickListener { onBackPressed() }
 
-            // Dates
-            edtDriverLicenseExp.setOnClickListener { pickDate() }
+            binding.edtDob.setOnClickListener {
+                pickDate(binding.edtDob)
+            }
 
-            // Image Upload Areas
+            binding.edtDriverLicenseExp.setOnClickListener {
+                pickDate(binding.edtDriverLicenseExp)
+            }
+
+
             llDriverLicTxt.setOnClickListener {
                 imageType = 1
                 showImagePickerDialog()
             }
+
             llDriverLicBackTxt.setOnClickListener {
                 imageType = 2
                 showImagePickerDialog()
             }
+
             llProfilePicTxt.setOnClickListener {
                 imageType = 3
                 showImagePickerDialog()
             }
+            llDriverAadharPicTxt.setOnClickListener {
+                imageType = 4
+                showImagePickerDialog()
+            }
+            llDriverAadharBackSidePicTxt.setOnClickListener {
+                imageType = 5
+                showImagePickerDialog()
+            }
 
-            // Submit
             btnNxt.setOnClickListener { validateAndSubmit() }
         }
     }
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        val selected = p0?.getItemAtPosition(p2).toString()
-        gender = if (selected == "Select gender") "" else selected
-    }
 
-    override fun onNothingSelected(p0: AdapterView<*>?) {}
+    // -------------------- Validation --------------------
 
-
-     fun validateAndSubmit() {
-
+    private fun validateAndSubmit() {
         binding.apply {
             val fName = edtFirstName.text.toString().trim()
             val lName = edtLastName.text.toString().trim()
             val email = edtEmail.text.toString().trim()
-            val pwd = "123456"
-            val confirmPwd = "123456"
             val licId = edtDriverLicense.text.toString().trim()
             val licExp = edtDriverLicenseExp.text.toString().trim()
 
             when {
                 fName.isEmpty() -> showToast("Enter First Name")
-                gender.isEmpty() -> showToast("Select Gender")
                 email.isEmpty() -> showToast("Enter Email")
-//                pwd.length < 5 -> showToast("Password too short")
-//                pwd != confirmPwd -> showToast("Passwords do not match")
-//                licId.isEmpty() -> showToast("Enter License ID")
-//                licExp.isEmpty() -> showToast("Select License Expiry")
-//                licenseImgUrl.isNullOrEmpty() -> showToast("Upload License Front")
-//                profileImgUrl.isNullOrEmpty() -> showToast("Upload Profile Photo")
-                else -> performRegistration(fName, lName, email, pwd, licId, licExp)
+                else -> registerDriver(fName, lName, email, licId, licExp)
             }
         }
     }
 
-    private fun performRegistration(fName: String, lName: String, email: String, pwd: String, licId: String, licExp: String) {
-        try {
-            val data = JSONObject().apply {
-                put("driver_id", SessionSave.getSession("reg_driver_Id", this@DriverProfileRegisterActivity))
-                put("firstname", fName)
-                put("lastname", lName)
-                put("gender", "male")
-                put("email", email)
-                put("password", pwd)
-                put("driver_license_id", licId)
-                put("driver_license_expire_date", licExp)
-                put("profile_picture", profileImgUrl)
-                put("driver_licence", licenseImgUrl)
-                put("license_back_side", licenseBackImgUrl)
-                put("aadhar_number", "")
-                put("dob", "")
-                put("dob", "")
-            }
+    // -------------------- API Registration --------------------
 
-            // Call your API helper
-            RegistrationTask("type=add_driver", data)
-
-        } catch (e: Exception) {
-            e.printStackTrace()
+    private fun registerDriver(
+        fName: String,
+        lName: String,
+        email: String,
+        licId: String,
+        licExp: String
+    ) {
+        val data = JSONObject().apply {
+            put(
+                "driver_id",
+                SessionSave.getSession("reg_driver_Id", this@DriverProfileRegisterActivity)
+            )
+            put("firstname", fName)
+            put("lastname", lName)
+            put("gender", gender)
+            put("email", email)
+            put("password", "123456")
+            put("repassword", "123456")
+            put("driver_dob", binding.edtDob.text.toString().trim())
+            put("driver_address", binding.edtAddress.text.toString().trim())
+            put("national_id", binding.edtDriverAadhar.text.toString().trim())
+            put("driver_license_id", licId)
+            put("driver_license_expire_date", licExp)
+            put("profile_picture", profileImgUrl)
+            put("driver_licence", licenseImgUrl)
+            put("license_back_side", licenseBackImgUrl)
+            put("driver_aadhar", driver_aadhar)
+            put("driver_aadhar_back_side", driver_aadhar_back_side)
         }
+
+        RegistrationTask("type=add_driver", data)
     }
-    inner class RegistrationTask internal constructor(url: String?, data: JSONObject?) :
-        APIResult {
-        var msg = ""
+
+    inner class RegistrationTask(url: String?, data: JSONObject?) : APIResult {
 
         init {
-            try {
-                if (NetworkStatus.isOnline(this@DriverProfileRegisterActivity)) {
-                    APIService_Retrofit_JSON(
-                        this@DriverProfileRegisterActivity,
-                        this,
-                        data,
-                        false
-                    ).execute(url)
-                } else {
-                    Utils.alert_view(
-                        this@DriverProfileRegisterActivity,
-                        NC.getString(R.string.message),
-                        NC.getString(R.string.check_net_connection),
-                        NC.getString(R.string.ok),
-                        "",
-                        true,
-                        this@DriverProfileRegisterActivity,
-                        "4"
-                    )
-                }
-            } catch (e: java.lang.Exception) {
-                e.printStackTrace()
+            if (NetworkStatus.isOnline(this@DriverProfileRegisterActivity)) {
+                APIService_Retrofit_JSON(
+                    this@DriverProfileRegisterActivity,
+                    this,
+                    data,
+                    false
+                ).execute(url)
+            } else {
+                Utils.alert_view(
+                    this@DriverProfileRegisterActivity,
+                    NC.getString(R.string.message),
+                    NC.getString(R.string.check_net_connection),
+                    NC.getString(R.string.ok),
+                    "",
+                    true,
+                    this@DriverProfileRegisterActivity,
+                    "4"
+                )
             }
         }
 
         override fun getResult(isSuccess: Boolean, result: String) {
+            var msg = ""
+
             if (isSuccess) {
                 try {
                     if (isSuccess) {
@@ -240,11 +241,11 @@ private fun setupClickListeners() {
                                         this@DriverProfileRegisterActivity
                                     )
                                 }
-//                                val intent = Intent(
-//                                    this@DriverProfileRegisterActivity,
-//                              //      AddFleetActivity::class.java
-//                                )
-//                                startActivity(intent)
+                                val intent = Intent(
+                                    this@DriverProfileRegisterActivity,
+                                    AddFleetActivity::class.java
+                                )
+                                startActivity(intent)
 
                             }
                         } else {
@@ -273,87 +274,116 @@ private fun setupClickListeners() {
             }
         }
     }
-    private fun pickDate() {
-        val c = Calendar.getInstance()
-        val datePicker = DatePickerDialog(this, R.style.DatePickerTheme, { _, year, month, day ->
-            val selectedDate = String.format("%02d-%02d-%d", day, month + 1, year)
-            binding.edtDriverLicenseExp.setText(selectedDate)
-        }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH))
 
-        datePicker.datePicker.minDate = System.currentTimeMillis()
-        datePicker.show()
+    // -------------------- Date Picker --------------------
+
+    private fun pickDate(targetView: EditText) {
+        val cal = Calendar.getInstance()
+
+        DatePickerDialog(
+            this,
+            R.style.DatePickerTheme,
+            { _, year, month, dayOfMonth ->
+                val date = String.format(
+                    "%02d-%02d-%04d",
+                    dayOfMonth,
+                    month + 1,
+                    year
+                )
+                targetView.setText(date)
+            },
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH),
+            cal.get(Calendar.DAY_OF_MONTH)
+        ).show()
     }
 
-     fun showImagePickerDialog() {
-        val options = arrayOf("Gallery", "Camera")
-        AlertDialog.Builder(this@DriverProfileRegisterActivity)
+
+    // -------------------- Image Picker --------------------
+
+    private fun showImagePickerDialog() {
+        AlertDialog.Builder(this)
             .setTitle("Select Image")
-            .setItems(options) { _, which ->
-                if (which == 0) pickFromGallery() else captureFromCamera()
+            .setItems(arrayOf("Gallery", "Camera")) { _, which ->
+                if (which == 0) openGallery() else openCamera()
             }.show()
     }
 
-    // --- Image Handling Logic ---
-
-    private fun pickFromGallery() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, REQUEST_GALLERY)
+    private fun openGallery() {
+        galleryLauncher.launch("image/*")
     }
 
-    private fun captureFromCamera() {
+    private fun openCamera() {
+        cameraImageUri = createImageUri()
+        cameraLauncher.launch(cameraImageUri)
+    }
+
+    private fun createImageUri(): Uri {
         val values = ContentValues().apply {
-            put(MediaStore.Images.Media.TITLE, "New Picture")
+            put(MediaStore.Images.Media.DISPLAY_NAME, "IMG_${System.currentTimeMillis()}.jpg")
+            put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
         }
-        imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE).apply {
-            putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
-        }
-        startActivityForResult(intent, REQUEST_CAMERA)
+        return contentResolver.insert(
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            values
+        )!!
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == RESULT_OK) {
-            val uri = if (requestCode == REQUEST_GALLERY) data?.data else imageUri
-            uri?.let { processAndUpload(it) }
-        }
-    }
+    private fun handleSelectedImage(uri: Uri) {
 
-    private fun processAndUpload(uri: Uri) {
-        val path = getRealPathFromURI(uri) ?: return
-        val compressedFile = compressImage(File(path))
-
-        // Show image in UI immediately
         when (imageType) {
-            1 -> binding.imgVLicense.setImageURI(Uri.fromFile(compressedFile))
-            2 -> binding.imgVLicenseBack.setImageURI(Uri.fromFile(compressedFile))
-            3 -> binding.imgVProfile.setImageURI(Uri.fromFile(compressedFile))
+            1 -> binding.imgVLicense.setImageURI(uri)
+            2 -> binding.imgVLicenseBack.setImageURI(uri)
+            3 -> binding.imgVProfile.setImageURI(uri)
+            4 -> binding.imgVDriverAadhar.setImageURI(uri)
+            5 -> binding.imgVDriverAadharBackSide.setImageURI(uri)
         }
 
-       uploadImageFile(compressedFile)
-    }//
+        val file = uriToFile(uri)
+        uploadImageFile(file)
+    }
+
+    private fun uriToFile(uri: Uri): File {
+        val file = File(cacheDir, "img_${System.currentTimeMillis()}.jpg")
+        contentResolver.openInputStream(uri)!!.use { input ->
+            file.outputStream().use { output ->
+                input.copyTo(output)
+            }
+        }
+        return file
+    }
+
+    // -------------------- Upload --------------------
 
     private fun uploadImageFile(file: File) {
         showLoading()
-        val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
 
-        val body = when (imageType) {
-            1 -> MultipartBody.Part.createFormData("driver_licence", file.name, requestFile)
-            2 -> MultipartBody.Part.createFormData("license_back_side", file.name, requestFile)
-            else -> MultipartBody.Part.createFormData("profile_picture", file.name, requestFile)
-        }
+        val body = MultipartBody.Part.createFormData(
+            when (imageType) {
+                1 -> "driver_licence"
+                2 -> "license_back_side"
+                3 -> "profile_picture"
+                4 -> "driver_aadhar"
+                5 -> "driver_aadhar_back_side"
+                else -> "driver_aadhar_back_side"
+            },
+            file.name,
+            file.asRequestBody("image/*".toMediaTypeOrNull())
+        )
 
-        val driverId = SessionSave.getSession("reg_driver_Id", this).toRequestBody("text/plain".toMediaTypeOrNull())
+        val driverId = SessionSave.getSession("reg_driver_Id", this)
+            .toRequestBody("text/plain".toMediaTypeOrNull())
 
         RetrofitClient.api.uploadLicenseBackSideImage(
-            license_back_side = body,
-            userId = driverId,
-            lang = SessionSave.getSession("Lang", this),
-            dt = "a",
-            i = SessionSave.getSession("reg_driver_Id", this),
-            pv = "2",
-            k = SessionSave.getSession(CommonData.FIREBASE_KEY, this)
+            body,
+            driverId,
+            SessionSave.getSession("Lang", this),
+            "a",
+            SessionSave.getSession("reg_driver_Id", this),
+            "2",
+            SessionSave.getSession(CommonData.FIREBASE_KEY, this)
         ).enqueue(object : Callback<UploadResponse> {
+
             override fun onResponse(call: Call<UploadResponse>, response: Response<UploadResponse>) {
                 hideLoading()
                 if (response.isSuccessful) {
@@ -361,45 +391,29 @@ private fun setupClickListeners() {
                         1 -> licenseImgUrl = response.body()?.url
                         2 -> licenseBackImgUrl = response.body()?.url
                         3 -> profileImgUrl = response.body()?.url
+                        4 -> driver_aadhar = response.body()?.url
+                        5 -> driver_aadhar_back_side = response.body()?.url
                     }
-                    showToast("Uploaded Successfully")
+                    showToast("Image Uploaded")
                 }
             }
 
             override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
                 hideLoading()
-                showToast("Upload Failed: ${t.message}")
+                showToast(t.message ?: "Upload Failed")
             }
         })
     }
 
-    // --- Utility Methods ---
-
-    private fun compressImage(file: File): File {
-        val bitmap = BitmapFactory.decodeFile(file.absolutePath)
-        val compressedFile = File(cacheDir, "temp_img_${System.currentTimeMillis()}.jpg")
-        FileOutputStream(compressedFile).use { out ->
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 70, out)
-        }
-        return compressedFile
-    }
-
-    private fun getRealPathFromURI(contentUri: Uri): String? {
-        val proj = arrayOf(MediaStore.Images.Media.DATA)
-        contentResolver.query(contentUri, proj, null, null, null)?.use { cursor ->
-            val index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-            cursor.moveToFirst()
-            return cursor.getString(index)
-        }
-        return null
-    }
+    // -------------------- UI Helpers --------------------
 
     private fun showLoading() {
         progressDialog = Dialog(this, R.style.dialogwinddow).apply {
             setContentView(R.layout.progress_bar)
             setCancelable(false)
-            val iv = findViewById<ImageView>(R.id.giff)
-            Glide.with(this@DriverProfileRegisterActivity).load(R.raw.loading_anim).into(iv)
+            Glide.with(this@DriverProfileRegisterActivity)
+                .load(R.raw.loading_anim)
+                .into(findViewById<ImageView>(R.id.giff))
             show()
         }
     }
@@ -409,26 +423,9 @@ private fun setupClickListeners() {
     }
 
     private fun showToast(msg: String) {
-        Toast.makeText(this@DriverProfileRegisterActivity, msg, Toast.LENGTH_SHORT).show()
-
-
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
-    override fun positiveButtonClick(
-        dialog: DialogInterface?,
-        id: Int,
-        s: String?
-    ) {
-
-    }
-
-    override fun negativeButtonClick(
-        dialog: DialogInterface?,
-        id: Int,
-        s: String?
-    ) {
-
-    }
-
-
+    override fun positiveButtonClick(dialog: DialogInterface?, id: Int, s: String?) {}
+    override fun negativeButtonClick(dialog: DialogInterface?, id: Int, s: String?) {}
 }

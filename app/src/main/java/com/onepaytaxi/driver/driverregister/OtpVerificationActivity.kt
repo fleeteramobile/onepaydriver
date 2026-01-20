@@ -3,6 +3,7 @@ package com.onepaytaxi.driver.driverregister
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Build
@@ -236,8 +237,21 @@ class OtpVerificationActivity : AppCompatActivity() {
         }
 
         val filter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
-        registerReceiver(smsBroadcastReceiver, filter)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(
+                smsBroadcastReceiver,
+                filter,
+                Context.RECEIVER_NOT_EXPORTED
+            )
+        } else {
+            registerReceiver(
+                smsBroadcastReceiver,
+                filter
+            )
+        }
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -252,8 +266,14 @@ class OtpVerificationActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         countDownTimer?.cancel()
-        unregisterReceiver(smsBroadcastReceiver)
+
+        try {
+            unregisterReceiver(smsBroadcastReceiver)
+        } catch (e: IllegalArgumentException) {
+            // receiver not registered – safe ignore
+        }
     }
+
 
     inner class OtpVerification internal constructor(url: String?, data: JSONObject?) :
         APIResult {
@@ -329,11 +349,11 @@ class OtpVerificationActivity : AppCompatActivity() {
                                 json.getJSONObject("detail").getString("company_id"),
                                 this@OtpVerificationActivity
                             )
-//                            val intent = Intent(
-//                                this@OtpVerificationActivity,
-//                                AddFleetActivity::class.java
-//                            )
-//                            startActivity(intent)
+                            val intent = Intent(
+                                this@OtpVerificationActivity,
+                                AddFleetActivity::class.java
+                            )
+                            startActivity(intent)
                         }
                     } else {
                         dialog = Utils.alert_view_dialog(this@OtpVerificationActivity,

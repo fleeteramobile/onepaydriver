@@ -40,7 +40,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layout_first_name"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/AppTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -58,10 +58,10 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layout_last_name"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/AppTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+
             android:hint="Last Name"
             app:boxBackgroundColor="#F5F9FE"
 
@@ -76,10 +76,10 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layout_email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/AppTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+
             android:hint="Email Address"
             app:boxBackgroundColor="#F5F9FE"
 
@@ -95,10 +95,9 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layout_address"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/AppTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:hint="Full Address"
             app:boxBackgroundColor="#F5F9FE"
 
@@ -120,10 +119,10 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layout_author_id"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/AppTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+
             android:hint="Aadhaar Number"
             app:boxBackgroundColor="#F5F9FE"
 
@@ -133,16 +132,16 @@
                 android:id="@+id/edt_driver_aadhar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layout_license_id"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/AppTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+
             android:hint="Driver License ID"
             app:boxBackgroundColor="#F5F9FE"
 
@@ -158,20 +157,22 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layout_dob"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/AppTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="Date of Birth"
+
+            android:hint="Date Of Birth"
             app:startIconDrawable="@android:drawable/ic_menu_my_calendar"
             app:startIconTint="#1A237E"
             app:boxBackgroundColor="#F5F9FE"
 
             app:boxStrokeWidth="0dp"
+
             app:layout_constraintTop_toBottomOf="@id/layout_license_id">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_dob"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="false"
@@ -183,10 +184,10 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layout_license_exp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/AppTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+
             android:hint="License Expiry Date"
             app:startIconDrawable="@android:drawable/ic_menu_my_calendar"
             app:startIconTint="#1A237E"
@@ -221,7 +222,7 @@
             android:id="@+id/frame_lic_front"
             android:layout_width="match_parent"
             android:layout_height="140dp"
-            android:layout_marginTop="10dp"
+
             android:background="@drawable/edittext_bg_normal"
             app:layout_constraintTop_toBottomOf="@id/txt_doc_label">
             <LinearLayout
@@ -241,7 +242,7 @@
             android:id="@+id/frame_lic_back"
             android:layout_width="match_parent"
             android:layout_height="140dp"
-            android:layout_marginTop="12dp"
+
             android:background="@drawable/edittext_bg_normal"
             app:layout_constraintTop_toBottomOf="@id/frame_lic_front">
             <LinearLayout
@@ -261,7 +262,7 @@
             android:id="@+id/frame_profile"
             android:layout_width="match_parent"
             android:layout_height="140dp"
-            android:layout_marginTop="12dp"
+
             android:background="@drawable/edittext_bg_normal"
             app:layout_constraintTop_toBottomOf="@id/frame_lic_back">
             <LinearLayout
@@ -277,6 +278,82 @@
             <ImageView android:id="@+id/imgV_profile" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="fitCenter" />
         </FrameLayout>
 
+
+        <FrameLayout
+            android:id="@+id/frame_driver_aadhar"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+
+            android:background="@drawable/edittext_bg_normal"
+            app:layout_constraintTop_toBottomOf="@id/frame_profile">
+
+            <LinearLayout
+                android:id="@+id/ll_driver_aadhar_pic_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/folder"
+                    app:tint="#1A237E" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Driver Aadhar"
+                    android:textColor="#1A237E"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imgV_driver_aadhar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/frame_driver_aadhar_back_side"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+
+            android:background="@drawable/edittext_bg_normal"
+            app:layout_constraintTop_toBottomOf="@id/frame_driver_aadhar">
+
+            <LinearLayout
+                android:id="@+id/ll_driver_aadhar_back_side_pic_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/folder"
+                    app:tint="#1A237E" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Driver Aadhar Back side"
+                    android:textColor="#1A237E"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imgV_driver_aadhar_back_side"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter" />
+        </FrameLayout>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_nxt"
             android:layout_width="match_parent"
@@ -289,7 +366,7 @@
             app:backgroundTint="@color/app_theme_main"
             app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/frame_profile" />
+            app:layout_constraintTop_toBottomOf="@id/frame_driver_aadhar_back_side" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

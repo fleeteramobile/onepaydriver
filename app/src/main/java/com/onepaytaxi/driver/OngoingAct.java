@@ -63,6 +63,11 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.OnApplyWindowInsetsListener;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -537,6 +542,27 @@ Boolean enable_os_waiting_fare = false;
         CommonData.current_act = "OngoingAct";
         CommonData.sContext = this;
         CommonData.current_trip_accept = 1;
+
+
+        View bottomLay = findViewById(R.id.bottomlay);
+
+        ViewCompat.setOnApplyWindowInsetsListener(bottomLay, new OnApplyWindowInsetsListener() {
+            @Override
+            public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
+                Insets navBarInsets = insets.getInsets(WindowInsetsCompat.Type.navigationBars());
+
+                v.setPadding(
+                        v.getPaddingLeft(),
+                        v.getPaddingTop(),
+                        v.getPaddingRight(),
+                        navBarInsets.bottom
+                );
+                return insets;
+            }
+        });
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
+
         // FontHelper.applyFont(this, findViewById(R.id.ongoing_lay));
 
         route = new Route();
@@ -624,15 +650,7 @@ Boolean enable_os_waiting_fare = false;
 
         allServices = new ArrayList<>();
         selectedServices = new ArrayList<>();
-        //   dropLay.setVisibility(View.GONE);
-//        if (dropppp.getVisibility() == View.GONE) {
-//
-//            final float scale = this.getResources().getDisplayMetrics().density;
-//            int pixels = (int) (60 * scale + 0.5f);
-//            dropLay.getLayoutParams().height = pixels;
-//            dropLay.invalidate();
-//
-//        }
+
 
         try {
             alert_bundle = getIntent().getExtras();
@@ -752,28 +770,20 @@ Boolean enable_os_waiting_fare = false;
         }
         LocalBroadcastManager.getInstance(OngoingAct.this).registerReceiver(listener,
                 new IntentFilter(LocationUpdate.WAITING_TIME));
-        // to handle the whether the waiting time is auto or manual
 
-        //set waiting time image if waiting time is manual
         if (!SessionSave.getSession(CommonData.WAITING_TIME, OngoingAct.this, false)) {
             ssWaitingTime_img.setImageResource(R.drawable.ic_play_circle);
             if (!SessionSave.getSession("trip_id", OngoingAct.this).equals("")) {
                 CommonData.km_calc = 1;
                 if (localBroadcastManager != null) {
-//                 //   Intent localIntent = new Intent(WAITING_TIME_RUN);
-//                    localIntent.putExtra(CommonData.WAITING_TIME_START_STOP, CommonData.WAITING_TIME_STOP);
-//                    localBroadcastManager.sendBroadcast(localIntent);
+
                 }
             }
         } else {
             ssWaitingTime_img.setImageResource(R.drawable.map_icon_red);
             if (!SessionSave.getSession("trip_id", OngoingAct.this).equals("")) {
                 CommonData.km_calc = 0;
-//                if (localBroadcastManager != null) {
-//                    Intent localIntent = new Intent(WAITING_TIME_RUN);
-//                    localIntent.putExtra(CommonData.WAITING_TIME_START_STOP, CommonData.WAITING_TIME_START);
-//                    localBroadcastManager.sendBroadcast(localIntent);
-//                }
+
             }
         }
 
@@ -799,12 +809,9 @@ Boolean enable_os_waiting_fare = false;
                 } else {
                     Systems.out.println("timer started ongoing" + SessionSave.getWaitingTime(OngoingAct.this));
 
-//                    stopService(new Intent(OngoingAct.this, WaitingTimerRun.class));
                     SessionSave.saveSession(CommonData.WAITING_TIME, false, OngoingAct.this);
                     if (localBroadcastManager != null) {
-//                        Intent localIntent = new Intent(WAITING_TIME_RUN);
-//                        localIntent.putExtra(CommonData.WAITING_TIME_START_STOP, CommonData.WAITING_TIME_STOP);
-//                        localBroadcastManager.sendBroadcast(localIntent);
+
                     }
                     ssWaitingTime_img.setImageResource(R.drawable.ic_play_circle);
                     CommonData.km_calc = 1;
@@ -813,33 +820,6 @@ Boolean enable_os_waiting_fare = false;
                 }
             }
         });
-        // ViewEnabledWithDelay(3000, butt_onboard);
-
-//        Glide.with(OngoingAct.this)
-//                .load(SessionSave.getSession("image_path", OngoingAct.this) + "callDriver.png")
-//                .apply(RequestOptions.placeholderOf(R.drawable.cancel).override((int) pxtoDp(100), (int) pxtoDp(100))).into(passengerphoneTxt);
-//                .into(new SimpleTarget<Drawable>() {
-//                    @Override
-//                    public void onResourceReady(@NonNull Drawable resource,
-//                                                @Nullable Transition<? super Drawable> transition) {
-//                        /* Set a drawable to the left of textView */
-//                        passengerphoneTxt.setCompoundDrawablesWithIntrinsicBounds(resource, null, null, null);
-//
-////                    }
-////                });
-//
-//        Glide.with(OngoingAct.this)
-//                .load(SessionSave.getSession("image_path", OngoingAct.this) + "tripCancel.png").error(R.drawable.ic_fleetera_cancel)
-//                .apply(RequestOptions.placeholderOf(R.drawable.ic_fleetera_cancel).override((int) pxtoDp(100), (int) pxtoDp(100))).into(TripcancelTxt);
-//                .into(new SimpleTarget<Drawable>() {
-//                    @Override
-//                    public void onResourceReady(@NonNull Drawable resource,
-//                                                @Nullable Transition<? super Drawable> transition) {
-//                        /* Set a drawable to the left of textView */
-//                        TripcancelTxt.setCompoundDrawablesWithIntrinsicBounds(resource, null, null, null);
-//
-//                    }
-//                });
 
 
         Glide.with(this).load(SessionSave.getSession("image_path", this) + "mapDirection.png").apply(RequestOptions.placeholderOf(R.drawable.gps_navigator).error(R.drawable.gps_navigator)).into((ImageView) findViewById(R.id.butt_navigator));

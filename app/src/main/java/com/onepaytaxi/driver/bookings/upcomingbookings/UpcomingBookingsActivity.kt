@@ -6,11 +6,17 @@ import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -255,33 +261,49 @@ class UpcomingBookingsActivity : AppCompatActivity(), UpcomeingTrip, ClickInterf
 
     override fun decline(_category: ResponseUpcomingTrips.Detail.PendingBooking) {
 
-        val dialog = AlertDialog.Builder(this)
-            .setTitle("Cancel Trip")
-            .setMessage(
-                "Cancellation charges of ₹500 will be applied if you cancel this trip.\n\nDo you want to continue?"
-            )
-            .setPositiveButton("Yes") { d, _ ->
-                try {
-                    val j = JSONObject()
-                    j.put("trip_id", _category.passengers_log_id)
-                    j.put("driver_id", SessionSave.getSession("Id", this))
-                    j.put("model_id", SessionSave.getSession("taxi_id", this))
+        val dialogView = LayoutInflater.from(this)
+            .inflate(R.layout.dialog_cancel_trip, null)
 
-                    val canceltripUrl = "type=show_booking_driver_cancel"
-                    CancelTrip(canceltripUrl, j)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-                d.dismiss()
-            }
-            .setNegativeButton("No") { d, _ ->
-                d.dismiss()
-            }
-            .setCancelable(false)
-            .create()
+        val dialog = Dialog(this)
+        dialog.setContentView(dialogView)
+        dialog.setCancelable(false)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+        val tvMessage = dialogView.findViewById<TextView>(R.id.tvMessage)
+        val btnYes = dialogView.findViewById<Button>(R.id.btnYes)
+        val btnNo = dialogView.findViewById<Button>(R.id.btnNo)
+
+        val cancelFare = _category.cancellation_fare ?: "0"
+        tvMessage.text =
+            "Cancellation charges of ₹$cancelFare will be applied if you cancel this trip.\n\nDo you want to continue?"
+
+        btnYes.setOnClickListener {
+            try {
+                val j = JSONObject()
+                j.put("trip_id", _category.passengers_log_id)
+                j.put("driver_id", SessionSave.getSession("Id", this))
+                j.put("model_id", SessionSave.getSession("taxi_id", this))
+
+                val canceltripUrl = "type=show_booking_driver_cancel"
+                CancelTrip(canceltripUrl, j)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            dialog.dismiss()
+        }
+
+        btnNo.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        // ✅ IMPORTANT
         dialog.show()
+        dialog.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
     }
+
 
 
 

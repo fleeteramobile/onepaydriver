@@ -71,6 +71,9 @@ import java.util.Locale;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -298,6 +301,21 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
     // Initialize the views on layout
     @Override
     public void Initialize() {
+
+        View root = findViewById(R.id.id_farelay);
+
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+
+            v.setPadding(
+                    systemBars.left,
+                    systemBars.top,
+                    systemBars.right,
+                    systemBars.bottom
+            );
+            return insets;
+        });
+
 
         btn_emergency = findViewById(R.id.btn_emergency);
       /*  if (SessionSave.getSession(CommonData.SOS_ENABLED, this, false)) {

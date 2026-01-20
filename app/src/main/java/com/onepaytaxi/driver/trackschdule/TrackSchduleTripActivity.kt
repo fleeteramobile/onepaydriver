@@ -26,6 +26,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
@@ -158,6 +160,20 @@ class TrackSchduleTripActivity : AppCompatActivity(), OnMapReadyCallback, LocalD
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_track_schdule_trip)
+
+        val root = findViewById<View>(R.id.rootLayout)
+
+        ViewCompat.setOnApplyWindowInsetsListener(root) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(
+                systemBars.left,
+                systemBars.top,
+                systemBars.right,
+                systemBars.bottom
+            )
+            insets
+        }
+
         trip_id = intent.getStringExtra("schdule_trip_id").toString()
         booking_Type = intent.getStringExtra("booking_Type").toString()
         pick_up_lat = intent.getStringExtra("pick_up_lat").toString()
